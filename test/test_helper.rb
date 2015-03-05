@@ -4,9 +4,6 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/rails/capybara"
 require "minitest/pride"
-require "minitest/given"
-
-
 
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
