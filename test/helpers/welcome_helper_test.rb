@@ -1,9 +1,8 @@
 require "test_helper"
 
-class WelcomeHelperTest < ActionView::TestCase
-
-  def test_sanity
-    flunk "Need real tests"
+describe "Welcome page has content", :capybara do
+  it "must include the name 'Manda'" do
+    visit root_path
+    page.must_have_content "Manda's Page"
   end
-
 end

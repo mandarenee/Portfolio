@@ -8,7 +8,7 @@ task default: 'test'
 
 Rake::TestTask.new do |t|
   t.libs << "test"
-  t.pattern = "test/**/*_spec.rb"
+  t.pattern = "test/**/*_test.rb"
 end
 
 Rails.application.load_tasks
