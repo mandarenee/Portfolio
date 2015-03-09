@@ -1,8 +1,15 @@
-<h1 class="center-block">Manda Kom</h1>
+<h3 class="center-block">Articles</h3>
 
-<button type="button" class="btn btn-primary btn-xs active">
-<%= link_to 'New Article', new_article_path %>
-</button>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><%= link_to 'View list', articles_path %></li>
+    <li><%= link_to 'New article', new_article_path %></li>
+  </ul>
+
+  <div class="col-sm-offset-10">
+  <%= link_to new_article_path, class: 'btn btn-primary btn-xs active' do %>
+    <i class="glyphicon glyphicon-pencil"></i> New Article
+  <% end %>
+</div>
 
 <table class="table-hover">
   <thead>
@@ -16,9 +23,8 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= article.title %></td>
-       <!--  <td><%= article.body %></td> -->
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article, class: 'btn btn-primary btn-xs active' %></td>
+        <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs active' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -9,11 +9,14 @@
 </head>
 
 <body>
+
+  <%= render 'shared/navigation' %>
+
   <div id="main-container" class="container-fluid">
       <div class="row">
-        <div id="sidebar" class="col-xs-3 bg-danger">
-          <h3>Hello.<br/>I'm Manda.</h3>
-          <h5>Web Developer</h5>
+        <div id="sidebar" class="col-xs-2 bg-danger">
+          <h3>Oi, tudo bem?<br/>Eu sou Manda</h3>
+          <h5>Rails Web Developer</h5>
         </div>
         <div id="main-content" class="col-xs-9">
           <%= yield %>
