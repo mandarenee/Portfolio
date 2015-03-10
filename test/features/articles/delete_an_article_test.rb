@@ -8,7 +8,7 @@ feature "DeleteAnArticle" do
     visit articles_path(article)
 
     # When I click delete
-    click_on "Delete Article"
+    click_on "Delete"
 
     # The article will be deleted
     page.wont_have_content "Code Fellow"

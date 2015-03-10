@@ -5,7 +5,8 @@ feature "Edit An Article" do
     # Given a posted Article
     article = Article.create(title: "First days as a Code Fellow",
         body:"It's hard, but it's worth it!")
-    visit articles_path(article)
+    visit articles_path
+    click_on "Show"
 
     # When I click edit and submit changes
     click_on "Edit Article"
