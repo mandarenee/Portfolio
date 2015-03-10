@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Manda Kom</title>
+  <title class="center-block">Manda Kom</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,6 +11,8 @@
 <body>
 
   <%= render 'shared/navigation' %>
+
+  <img src="<%= asset_url('Flowers.png') %>" class="flower">
 
   <div id="main-container" class="container-fluid">
       <div class="row">
@@ -25,4 +27,7 @@
     </div>
 
 </body>
+<footer>
+  <h6>Amanda Kom</h6>
+</footer>
 </html>

@@ -23,8 +23,8 @@
     <% @articles.each do |article| %>
       <tr>
       <td><%= article.title %></td>
-        <td><%= link_to 'Show', article, class: 'btn btn-primary btn-xs active' %></td>
-        <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs active' %></td>
+        <td class="buttonspace"><%= link_to 'Show', article, class: 'btn btn-primary btn-xs active' %></td>
+        <td class="buttonspace"><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs active' %></td>
       </tr>
     <% end %>
   </tbody>
