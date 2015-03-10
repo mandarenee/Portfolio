@@ -1,5 +1,10 @@
 module ApplicationHelper
   def flash_class(level)
-    level == :notice ? "info" : level.to_s
+    case level
+    when "notice" then "alert-info"
+    when "success" then "alert-success"
+    when "error" then "alert-error"
+    when "alert" then "alert-error"
+    end
   end
 end
