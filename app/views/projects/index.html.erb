@@ -1,17 +1,27 @@
-<h3>Manda's Portfolio</h3>
+<section id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Manda's Portfolio</h3>
+          <hr class="star-primary">
+        </div>
+      </div>
+      <%= link_to 'New project', new_project_path %>
 
-<ul>
-  <% @projects.each do |project| %>
-  <li class="project" id="<%= dom_id(project) %>">
-    <h4><%= project.name %></h4>
-    <p><%= project.technologies_used %></p>
-    <div class="nav">
-      <%= link_to 'Show', project %> |
-      <%= link_to 'Edit', edit_project_path(project) %> |
-      <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?' } %>
-    </div>
-  </li>
-  <% end %>
-</ul>
-<br />
-<%= link_to 'New project', new_project_path %>
+      <ul>
+        <% @projects.each do |project| %>
+        <li class="project" id="<%= dom_id(project) %>">
+          <h4><%= project.name %></h4>
+          <p><%= project.technologies_used %></p>
+          <div class="nav">
+            <%= link_to 'Show', project %> |
+            <%= link_to 'Edit', edit_project_path(project) %> |
+            <%= link_to 'Delete', project, method: :delete, data: {confirm: 'Are you sure?' } %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <br />
+    </section>
+  </div>
+</div>

@@ -26,6 +26,11 @@
 
   <%= render 'shared/navigation' %>
 
+  <div id="sidebar" class="col-xs-2 bg-danger">
+    <h3>Viu as flores?<br/></h3>
+    <h4>Que linda!</h4>
+  </div>
+
   <% flash.each do |key, value| %>
     <div class="alert-box round <%= flash_class(key) %>">
       <%= value %>
@@ -35,10 +40,6 @@
 
   <div id="main-container" class="container-fluid">
       <div class="row">
-        <div id="sidebar" class="col-xs-2 bg-danger">
-          <h3>Viu as flores?<br/></h3>
-          <h4>Que linda!</h4>
-        </div>
         <div id="main-content" class="col-xs-9">
           <%= yield %>
         </div>
@@ -46,7 +47,4 @@
     </div>
 
 </body>
-<footer>
-  <h6>Amanda Kom</h6>
-</footer>
 </html>

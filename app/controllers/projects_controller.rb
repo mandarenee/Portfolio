@@ -35,6 +35,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def destroy
+    @project.destroy
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     def project_params
       params.require(:project).permit(:name, :technologies_used)
