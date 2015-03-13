@@ -5,7 +5,7 @@ feature "
   so that I can perform actions that require me to be logged in.
   " do
   scenario "sign up" do
-    visit "/"
+    visit root_path
     click_on "Sign Up"
     fill_in "Email", with: "test@example.com"
     fill_in "Password", with: "password"

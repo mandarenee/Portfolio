@@ -5,7 +5,7 @@ feature "DeleteAProject" do
     # Given an existing article
     project = Project.create(name: "First Project",
         technologies_used: "Rails, Ruby, HTML")
-    visit projects_path
+    visit project_path(project)
 
     # When I click delete
     click_on "Delete"
