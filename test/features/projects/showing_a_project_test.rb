@@ -1,9 +1,16 @@
 require "test_helper"
 
-feature "Create the spec file for showing a single project" do
-  scenario "the test is sound" do
-    visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+feature "Showing a project" do
+  scenario "Show a specific project" do
+    visit projects_path
+    click_on "New project"
+
+    fill_in "Name", with: "My First Portfolio"
+    fill_in "Technologies used", with: "Ruby, Rails"
+
+    click_on "Create Project"
+
+    page.must_have_content "First Portfolio"
+    page.wont_have_content "HTML"
   end
 end

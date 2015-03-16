@@ -36,11 +36,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
+    @project = Project.find(params[:id])
+
+    if @project.present?
+      @project.destroy
     end
+
+    redirect_to projects_path, notice: 'Project was successfully destroyed.'
   end
 
   private

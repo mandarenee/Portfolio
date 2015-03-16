@@ -13,5 +13,15 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  def create_projects(project)
+    visit projects_path
+    click_on "New project"
+
+    fill_in "Name", with: project.name
+    fill_in "Technologies used", with: project.technologies_used
+
+    click_on "Create Project"
+  end
+
   # Add more helper methods to be used by all tests here...
 end
