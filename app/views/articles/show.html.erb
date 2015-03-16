@@ -9,6 +9,9 @@
   <strong>Body:</strong>
   <%= @article.body %>
 </p>
+<p id="author">
+  <p><strong>By:</strong> <%= current_user.email %></p>
+</p>
 
 <%= link_to 'Edit Article', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
