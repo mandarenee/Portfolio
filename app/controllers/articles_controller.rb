@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params[:id])
-    if request.path != article_path(@article)
+    unless request.path == article_path(@article)
       redirect_to @article, status: :moved_permanently
     end
   end
@@ -16,7 +16,6 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
-
 
   def create
     @article = Article.new(article_params)
@@ -53,16 +52,16 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def set_article
-      @article = Article.friendly.find(params[:id])
-    end
 
-    def authorize_article
-     authorize Article
-    end
+  def set_article
+    @article = Article.friendly.find(params[:id])
+  end
 
-    def article_params
-      params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
-    end
+  def authorize_article
+    authorize Article
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
+  end
 end
-
