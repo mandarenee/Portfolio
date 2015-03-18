@@ -30,13 +30,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    # @article = Article.find(article_params)
-    # authorize @article, update?
   end
 
   def update
     @article = Article.friendly.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
@@ -46,7 +43,6 @@ class ArticlesController < ApplicationController
 
   def publish
     @article = Article.find(article_params)
-    authorize @article, :update?
     @article.publish!
     redirect_to @article
   end

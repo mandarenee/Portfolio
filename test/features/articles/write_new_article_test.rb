@@ -40,4 +40,34 @@ feature "Write New Article" do
     click_on "Create Article"
     page.text.must_include "Status: Published"
   end
+
+  scenario "Authors can read published articles" do
+    create_other_article
+    sign_in(:one)
+    visit articles_path
+    page.text.must_include "Published"
+  end
+
+  scenario "Editors can write articles" do
+    sign_in(:user)
+    create_pub_article
+    page.text.must_include "it's worth it"
+    page.text.must_include "Status: Published"
+  end
+
+  scenario "Editors can publish" do
+    sign_in(:editor)
+    visit new_article_path
+    page.must_have_field('Published')
+    fill_in "Title", with: articles(:UserUnpublished).title
+    fill_in "Body", with: articles(:UserUnpublished).body
+    check "Published"
+    click_on "Create Article"
+    page.text.must_include "Status: Published"
+  end
+
+  scenario "Visitors CANNOT see new article button" do
+    visit articles_path
+    page.wont_have_link "New article"
+  end
 end

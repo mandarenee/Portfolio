@@ -38,6 +38,14 @@ class ActiveSupport::TestCase
     click_on "Create Article"
   end
 
+  def create_pub_article
+    visit new_article_path
+    fill_in "Title", :with => "First days as a Code Fellow"
+    fill_in "Body", :with => "It's hard, but it's worth it!"
+    check "Published"
+    click_on "Create Article"
+  end
+
   def create_other_article
     sign_in(:editor)
     visit new_article_path

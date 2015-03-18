@@ -14,11 +14,11 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    user.editor? or user.author?
+    user.editor? || user.author?
   end
 
   def destroy?
-    user.editor? && !record.published?
+    user.editor? || !record.published?
   end
 
   def publish
