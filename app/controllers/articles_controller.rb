@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
-  before_filter :authorize, only: [:edit, :update]
+  before_action :authorize_article, only: [:edit, :update]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = policy_scope(Article)
   end
 
   def show
@@ -17,8 +17,6 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit
-  end
 
   def create
     @article = Article.new(article_params)
@@ -31,6 +29,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    # @article = Article.find(article_params)
+    # authorize @article, update?
+  end
+
   def update
     @article = Article.friendly.find(params[:id])
 
@@ -41,9 +44,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def publish
+    @article = Article.find(article_params)
+    authorize @article, :update?
+    @article.publish!
+    redirect_to @article
+  end
+
   def destroy
     @article.destroy
-
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
@@ -52,8 +61,12 @@ class ArticlesController < ApplicationController
       @article = Article.friendly.find(params[:id])
     end
 
-    def article_params
-      params.require(:article).permit(:title, :body)
+    def authorize_article
+     authorize Article
     end
 
+    def article_params
+      params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
+    end
 end
+

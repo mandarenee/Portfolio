@@ -3,11 +3,8 @@ require "test_helper"
 feature "Edit An Article" do
   scenario "make changes to an existing article" do
     # Given a posted Article
-    sign_up
-    article = Article.create(title: "First days as a Code Fellow",
-        body:"It's hard, but it's worth it!")
-    visit articles_path
-    click_on "Show"
+    sign_in(:user)
+    create_article
 
     # When I click edit and submit changes
     click_on "Edit Article"

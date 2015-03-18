@@ -22,12 +22,30 @@ class ActiveSupport::TestCase
     click_on "Sign up"
   end
 
-  def sign_in(user)
-    visit root_path
-    click_on "Sign In"
-    fill_in "Email", with: user.email
+  def sign_in(role = :editor)
+    visit new_user_session_path
+    fill_in "Email", with: users(role).email
     fill_in "Password", with: 'password'
     click_on "Log in"
   end
-  # Add more helper methods to be used by all tests here...
+
+  def create_article
+    visit new_article_path
+
+    fill_in "Title", :with => "First days as a Code Fellow"
+    fill_in "Body", :with => "It's hard, but it's worth it!"
+
+    click_on "Create Article"
+  end
+
+  def create_other_article
+    sign_in(:editor)
+    visit new_article_path
+
+    fill_in "Title", :with => "Been in school a little while"
+    fill_in "Body", :with => "I'm getting the hang of this"
+
+    click_on "Create Article"
+    click_on "Sign Out"
+  end
 end

@@ -10,8 +10,14 @@
   <%= @article.body %>
 </p>
 <p id="author">
-  <p><strong>By:</strong> <%= current_user.email %></p>
+  <p><strong>By:</strong> <%= @article.author_id %></p>
 </p>
+<% if @article.published? %>
+<p>Status: Published</p>
+<% else %>
+  <p>Status: Unpublished</p>
+<% end %>
 
 <%= link_to 'Edit Article', edit_article_path(@article) %> |
+<%= link_to 'Delete Article', @article, method: :delete, data: {confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', articles_path %>
