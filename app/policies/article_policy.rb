@@ -3,6 +3,8 @@ class ArticlePolicy < ApplicationPolicy
     def resolve
       if user.editor?
         scope.all
+      elsif user.author?
+        user.articles + scope.where(published: true)
       else
         scope.where(published: true)
       end
