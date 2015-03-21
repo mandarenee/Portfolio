@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318072329) do
+ActiveRecord::Schema.define(version: 20150320003338) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 20150318072329) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -75,6 +73,9 @@ ActiveRecord::Schema.define(version: 20150318072329) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "role",                   limit: 255
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

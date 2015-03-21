@@ -8,9 +8,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params[:id])
-    unless request.path == article_path(@article)
-      redirect_to @article, status: :moved_permanently
-    end
+    redirect_to @article, status: :moved_permanently unless request.path == article_path(@article)
   end
 
   def new

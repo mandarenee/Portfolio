@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.1'
 group :test, :development do
   gem 'sqlite3'
@@ -33,6 +32,7 @@ gem 'rails_12factor', group: :production
 gem 'friendly_id'
 gem 'devise'
 gem 'pundit'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'omniauth-twitter'
 
 # Use ActiveModel has_secure_password

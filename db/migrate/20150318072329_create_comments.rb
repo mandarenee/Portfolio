@@ -9,7 +9,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :referrer
       t.text :content
       t.boolean :approved
-      t.belongs_to :article, index: true
+      t.references :article
 
       t.timestamps
     end
