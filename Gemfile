@@ -16,6 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'font-awesome-rails'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails'
 
@@ -34,6 +35,8 @@ gem 'devise'
 gem 'pundit'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
