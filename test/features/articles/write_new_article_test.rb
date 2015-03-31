@@ -15,7 +15,7 @@ feature "Write New Article" do
     # Then the article should be created and displayed
     page.must_have_content "Article was successfully created"
     page.must_have_content "it's worth it"
-    page.text.must_include "test1@test.com"
+    page.text.must_include "Strawberry Shortcake"
     page.text.must_include "Status: Unpublished"
   end
 
@@ -34,8 +34,8 @@ feature "Write New Article" do
     sign_in(:user)
     visit new_article_path
     page.must_have_field('Published')
-    fill_in "Title", with: articles(:UserTest).title
-    fill_in "Body", with: articles(:UserTest).body
+    fill_in "Title", with: articles(:OnePublished).title
+    fill_in "Body", with: articles(:OnePublished).body
     check "Published"
     click_on "Create Article"
     page.text.must_include "Status: Published"
@@ -59,8 +59,8 @@ feature "Write New Article" do
     sign_in(:editor)
     visit new_article_path
     page.must_have_field('Published')
-    fill_in "Title", with: articles(:UserUnpublished).title
-    fill_in "Body", with: articles(:UserUnpublished).body
+    fill_in "Title", with: articles(:OneUnpublished).title
+    fill_in "Body", with: articles(:OneUnpublished).body
     check "Published"
     click_on "Create Article"
     page.text.must_include "Status: Published"

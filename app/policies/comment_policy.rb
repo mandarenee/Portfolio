@@ -1,16 +1,23 @@
 class CommentPolicy < ApplicationPolicy
   class Scope < Scope
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
     def resolve
       if user.editor?
         scope.all
+      elsif !user.nil?
+        scope.all
       else
-        scope.where(published: true)
+        scope.where(approved: true)
       end
     end
   end
 
   def create?
-    user.editor? || user.author?
+    !user.unauthenticated?
   end
 
   def update?

@@ -4,46 +4,37 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
+  <header class = " navbar ">
+    <img src="<%= asset_url('hero2.jpg') %>" width="100%">
+      <div class="container">
+        <% if current_user %>
+          <p align="right">
+            Signed in as <%= current_user.name %>. Not you? <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+          </p>
+        <% else %>
+          <p align="right"><%= link_to 'Sign Up', new_user_registration_path %>, <%= link_to 'Sign In', new_user_session_path %>, or <%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %></p>
+        <% end %>
+        <% flash.each do |key, value| %>
+          <div class="alert-box round <%= flash_class(key) %>">
+            <%= value %>
+          </div>
+        <% end %>
 
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12" align="middle">
-                <div class="intro-text">
-                    <h2><span class="name">Manda Kom</span></h2>
-                    <span class="skills">Rails Web Developer</span>
-                    <br/>
-                    <img src="<%= asset_url('Flowers.png') %>" width="30%">
-                </div>
-            </div>
-        </div>
+      <nav>
+        <ul id="menu-main" class="nav nav-tabs text-center">
+          <li role="presentation" class="text-center"><%= link_to 'About Me', welcome_path %></li>
+          <li role="presentation" class="text-center"><%= link_to 'Portfolio', projects_path %></li>
+          <li role="presentation" class="text-center"><%= link_to 'Blog', articles_path %></li>
+        </ul>
+      </nav>
     </div>
-</header>
-
-<body>
-
-  <%= render 'shared/navigation' %>
-
-  <div id="sidebar" class="col-xs-2 bg-danger">
-    <h3>Viu as flores?<br/></h3>
-    <h4>Que linda!</h4>
-  </div>
-
-  <% flash.each do |key, value| %>
-    <div class="alert-box round <%= flash_class(key) %>">
-      <%= value %>
+  </header>
+  <body>
+    <div class = "container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-  <% end %>
-
-  <div id="main-container" class="container-fluid">
-      <div class="row">
-        <div id="main-content" class="col-xs-9">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
-
-</body>
+  </body>
 </html>

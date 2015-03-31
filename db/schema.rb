@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320003338) do
+ActiveRecord::Schema.define(version: 20150331160037) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150320003338) do
     t.string   "slug"
     t.integer  "author_id"
     t.boolean  "published"
+    t.string   "author"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug"
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150320003338) do
     t.string   "technologies_used"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "users", force: true do |t|
