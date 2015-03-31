@@ -6,17 +6,22 @@
           <hr class="star-primary">
         </div>
       </div>
-      <%= link_to 'New article', new_article_path %>
+      <% if ArticlePolicy.new(current_user, @article).create? %>
+        <%= link_to 'New article', new_article_path %>
+      <% end %>
 
       <ul>
         <% @articles.each do |article| %>
           <li class="article" id="<%= dom_id(article) %>"></li>
-            <h4><%= article.title %></h4>
+            <h4><%= link_to article.title, article %></h4>
             <div class="nav">
-              <%= link_to 'Show', article %> |
-              <%= link_to 'Edit', edit_article_path(article) %> |
-              <%= link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?' } %>
-            </div>
+              <% if policy(article).update? %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+              <% end %>
+              <% if policy(article).destroy? %>
+                <%= link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?' } %>
+              <% end %>
+
           </li>
         <% end %>
       </ul>
