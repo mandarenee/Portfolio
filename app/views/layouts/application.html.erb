@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Manda Kom (really loves puppies) </title>
+  <title>Manda Kom</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+</head>
+
+<body>
+  <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3 bg-danger">
+          <h3>Hello.<br/>I'm Manda.</h3>
+          <h5>Web Developer</h5>
+        </div>
+        <div id="main-content" class="col-xs-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>

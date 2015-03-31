@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.1.1'
-gem 'sqlite3'
+gem 'sqlite3',        group: :development
+gem 'sqlite3',        group: :test
+gem 'pg',             group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -21,6 +23,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'bootstrap-sass', '3.2.0.2'
+# automatically adds the proper vendor prefixes to your CSS code when it is compiled
+gem 'autoprefixer-rails'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
@@ -29,6 +35,8 @@ gem "minitest-rails"
 group :test do
   gem "minitest-rails-capybara"
 end
+
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
