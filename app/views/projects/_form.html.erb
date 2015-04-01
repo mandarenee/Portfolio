@@ -10,18 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-
+  <%= f.hidden_field :key %>
+  <p>File: <%= @project.image_name %></p>
+      <div class="project">
+        <% if @project.image_processed? %>
+          <%= link_to image_tag(@project.image_url(:thumb)), @project %>
+        <% else %>
+          <em>Processing...</em>
+        <% end %>
+      </div>
       <div class="field">
         <%= f.label :name %><br />
         <%= f.text_field :name %>
-      </div>
-      <div>
-        <%= f.file_field :image %>
-      </div>
-      <div>
-        <%= f.label :remote_image_url, "or image URL:" %><br />
-        <%= f.text_field :remote_image_url %>
       </div>
       <div class="field">
         <%= f.label :technologies_used %><br />
