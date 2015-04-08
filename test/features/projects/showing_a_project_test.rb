@@ -1,10 +1,16 @@
 require "test_helper"
 
-feature "Create the spec file for showing a single project" do
-  scenario "the test is sound" do
-    project = Project.create(name: "First Project", technologies_used: "Rails, Ruby, HTML")
-    visit project_path(project)
-    page.must_have_content "First Project"
-    page.wont_have_content "Pickles"
+feature "Showing a project" do
+  scenario "Show a specific project" do
+    visit projects_path
+    click_on "New project"
+
+    fill_in "Name", with: "My First Portfolio"
+    fill_in "Technologies used", with: "Ruby, Rails"
+
+    click_on "Create Project"
+
+    page.must_have_content "First Portfolio"
+    page.wont_have_content "HTML"
   end
 end
