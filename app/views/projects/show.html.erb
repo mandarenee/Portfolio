@@ -1,4 +1,5 @@
 <h2><%= @project.name %></h2>
+<%= image_tag @project.image_url if @project.image? %>
 <p>Technologies used: <%= @project.technologies_used %></p>
 
   <div class="nav">

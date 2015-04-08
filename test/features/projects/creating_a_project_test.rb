@@ -25,5 +25,4 @@ feature "As site owner, I want to add a portfolio to show my work" do
     page.text.must_include "That's too short!"
     page.text.must_include "Technologies used can't be blank"
   end
-
 end

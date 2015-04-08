@@ -3,7 +3,11 @@ require "test_helper"
 feature "As the site visitor, I want to see a developer's portfolio" do
   scenario "viewing all projects" do
     # Given a couple of projects (loaded from fixtures)
+<<<<<<< HEAD
     create_projects(projects(:portfolio))
+=======
+    Project.create(name: "Barnyard Cereal", technologies_used: "Ruby, Rails")
+>>>>>>> master
     # When I visit /projects
     visit projects_path
 

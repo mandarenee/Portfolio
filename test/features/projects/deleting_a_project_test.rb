@@ -3,7 +3,8 @@ require "test_helper"
 feature "Delete A Project" do
   scenario "Delete an existing projects" do
     # Given an existing article
-    visit projects_path
+    project = Project.create(name: "First Project", technologies_used: "Rails, Ruby, HTML")
+    visit project_path(project)
 
     visit project_path(projects(:portfolio))
     # When I click delete

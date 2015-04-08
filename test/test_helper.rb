@@ -5,12 +5,8 @@ require "minitest/rails/capybara"
 require "minitest/pride"
 
 class ActiveSupport::TestCase
-    ActiveRecord::Migration.check_pending!
+  ActiveRecord::Migration.check_pending!
 
-    # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
   fixtures :all
 
   def create_projects(project)
@@ -23,5 +19,43 @@ class ActiveSupport::TestCase
     click_on "Create Project"
   end
 
-  # Add more helper methods to be used by all tests here...
+  def sign_up
+    visit root_path
+    click_on "Sign Up"
+    fill_in "Email", with: "test@example.com"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    click_on "Sign up"
+  end
+
+  def sign_in(role = :editor)
+    visit new_user_session_path
+    fill_in "Email", with: users(role).email
+    fill_in "Password", with: 'password'
+    click_on "Log in"
+  end
+
+  def create_article
+    visit new_article_path
+    fill_in "Title", with: "First days as a Code Fellow"
+    fill_in "Body", with: "It's hard, but it's worth it!"
+    click_on "Create Article"
+  end
+
+  def create_pub_article
+    visit new_article_path
+    fill_in "Title", with: "First days as a Code Fellow"
+    fill_in "Body", with: "It's hard, but it's worth it!"
+    check "Published"
+    click_on "Create Article"
+  end
+
+  def create_other_article
+    sign_in(:editor)
+    visit new_article_path
+    fill_in "Title", with: "Been in school a little while"
+    fill_in "Body", with: "I'm getting the hang of this"
+    click_on "Create Article"
+    click_on "Sign Out"
+  end
 end

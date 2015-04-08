@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.1.1'
 group :test, :development do
   gem 'sqlite3'
@@ -17,6 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'font-awesome-rails'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'autoprefixer-rails'
 
@@ -32,6 +32,15 @@ gem 'rails_12factor', group: :production
 
 gem 'friendly_id'
 gem 'devise'
+gem 'pundit'
+gem 'dotenv-rails', :groups => [:development, :test]
+gem 'omniauth-twitter'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
+gem 'fog-aws'
+gem 'carrierwave_direct'
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

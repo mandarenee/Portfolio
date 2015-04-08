@@ -1,0 +1,29 @@
+
+OnePublished:
+  title: 1. One Published
+  body: Means striving for excellence
+  author: one
+  published: true
+
+UserUnpublished:
+  title: 2. User Unpublished
+  body: This is how I learned web development
+  author: user
+  published: false
+
+OneUnpublished:
+  title: 3. One Unpublished
+  body: Means striving for excellence
+  author: one
+  published: false
+
+TwoPublished:
+  title: 4. Two Published
+  body: Means striving for excellence
+  author: two
+  published: true
+
+UserTest:
+  title: User Test
+  body: Does it publish?
+

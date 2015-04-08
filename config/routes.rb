@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :articles
+
+  devise_for :users, path_names: {sign_in: "Sign In", sign_out: "Sign Out"},
+                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  resources :users
   resources :projects
+  resources :articles do
+    resources :comments
+  end
 
-  get 'articles/index' => redirect('articles')
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'articles#index'
+  get 'articles/index' => redirect('articles')
   get 'welcome', to: 'welcome#index'
 
   # Example of regular route:
