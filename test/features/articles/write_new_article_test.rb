@@ -6,8 +6,8 @@ feature "Write New Article" do
     sign_in(:one)
     visit new_article_path
 
-    fill_in "Title", :with => "First days as a Code Fellow"
-    fill_in "Body", :with => "It's hard, but it's worth it!"
+    fill_in "Title", with: "First days as a Code Fellow"
+    fill_in "Body", with: "It's hard, but it's worth it!"
 
     # When I submit the form
     click_on "Create Article"

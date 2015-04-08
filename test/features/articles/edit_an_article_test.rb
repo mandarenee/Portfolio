@@ -8,7 +8,7 @@ feature "Edit An Article" do
 
     # When I click edit and submit changes
     click_on "Edit Article"
-    fill_in "Title", :with => "First days as a Code Fellow student"
+    fill_in "Title", with: "First days as a Code Fellow student"
     click_on "Update Article"
 
     # Then I make saved updates to article
@@ -28,5 +28,4 @@ feature "Edit An Article" do
     visit articles_path
     page.text.must_include "Edit"
   end
-
 end

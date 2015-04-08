@@ -14,25 +14,22 @@ feature "Visiting the article index" do
     page.text.must_include "First days as a Code Fellow"
   end
 
-  # scenario "
-  #   Authors can read THEIR OWN UNpublished articles, but not those written by others
-  # " do
-  #   sign_in(:one)
-  #   create_article
-  #   click_on "Sign Out"
-  #   sign_in(:two)
-  #   visit new_article_path
-
-  #   fill_in "Title", :with => "Been in school a little while"
-  #   fill_in "Body", :with => "I'm getting the hang of this"
-
-  #   click_on "Create Article"
-  #   visit articles_path
-
-  #   page.text.must_include "Been in school"
-  #   page.wont_have_content "First days"
-  #   page.wont_have_content "published"
-  # end
+  scenario "
+    Authors can read THEIR OWN UNpublished articles, but not those written by others
+  " do
+    sign_in(:one)
+    create_article
+    click_on "Sign Out"
+    sign_in(:two)
+    visit new_article_path
+    fill_in "Title", with: "Been in school a little while"
+    fill_in "Body", with: "I'm getting the hang of this"
+    click_on "Create Article"
+    visit articles_path
+    page.text.must_include "Been in school"
+    page.wont_have_content "First days"
+    page.wont_have_content "published"
+  end
 
   scenario "Editors can read ALL UNpublished articles" do
     sign_in(:one)

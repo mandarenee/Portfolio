@@ -1,0 +1,12 @@
+<h4>Comment for <%= @article.title %>:</h4>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View Articles', articles_path %></li>
+  <li class="active"><%= link_to 'Comment', new_article_comment_path %></li>
+</ul>
+
+<div class="col-sm-offset-11">
+  <%= link_to 'Back', articles_path, class: 'btn btn-primary btn-sm active' %>
+</div>
+
+<%= render 'form' %>

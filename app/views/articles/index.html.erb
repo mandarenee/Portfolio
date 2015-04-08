@@ -20,6 +20,9 @@
               <% end %>
               <% if policy(article).destroy? %>
                 <%= link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?' } %>
+                <% if article.published? %>
+                  <%= link_to 'Comment', new_article_comment_path(article) %>
+                <% end %>
               <% end %>
 
           </li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317203854) do
+ActiveRecord::Schema.define(version: 20150331235627) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,9 +21,24 @@ ActiveRecord::Schema.define(version: 20150317203854) do
     t.string   "slug"
     t.integer  "author_id"
     t.boolean  "published"
+    t.string   "author"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug"
+
+  create_table "comments", force: true do |t|
+    t.string   "commenter_name"
+    t.string   "commenter_url"
+    t.string   "commenter_email"
+    t.string   "user_ip"
+    t.string   "user_agent"
+    t.string   "referrer"
+    t.text     "content"
+    t.boolean  "approved"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -43,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150317203854) do
     t.string   "technologies_used"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.boolean  "image_processed"
   end
 
   create_table "users", force: true do |t|
@@ -59,6 +76,9 @@ ActiveRecord::Schema.define(version: 20150317203854) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "role",                   limit: 255
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
