@@ -42,6 +42,10 @@ gem 'fog-aws'
 gem 'carrierwave_direct'
 gem 'sidekiq'
 
+group :test do
+  gem 'email_spec'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

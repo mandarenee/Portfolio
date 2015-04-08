@@ -3,6 +3,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails/capybara"
 require "minitest/pride"
+require "minitest-matchers"
+require "email_spec"
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
