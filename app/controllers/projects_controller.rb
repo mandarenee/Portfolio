@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
+    @uploader = Project.new.image
+    @uploader.success_action_redirect = new_project_url
   end
 
   def new
-    @project = Project.new
+    @project = Project.new(key: params[:key])
   end
 
   def create
@@ -37,13 +39,18 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy if @project.present?
-    redirect_to projects_url, notice: "Project was successfully deleted"
+
+    if @project.present?
+      @project.destroy
+    end
+
+    redirect_to projects_path, notice: 'Project was successfully destroyed.'
+
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:name, :technologies_used, :image, :remote_image_url)
+    params.require(:project).permit(:name, :technologies_used, :image, :remote_image_url, :key)
   end
 end

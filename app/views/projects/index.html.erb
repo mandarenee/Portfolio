@@ -6,7 +6,10 @@
           <hr class="star-primary">
         </div>
       </div>
-      <%= link_to 'New project', new_project_path %>
+      <%= direct_upload_form_for @uploader do |f| %>
+        <p><%= f.file_field :image %></p>
+        <p><%= f.submit "Upload Image" %></p>
+      <% end %>
 
       <ul>
         <% @projects.each do |project| %>
