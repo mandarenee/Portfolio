@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authorize_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+
   def index
     @article = Article.friendly.find(params[:article_id])
     @comments = @article.comments
@@ -52,7 +55,15 @@ class CommentsController < ApplicationController
 
   private
 
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def authorize_comment
+    authorize Comment
+  end
+
   def comment_params
-    params.require(:comment).permit(:commenter_name, :content)
+    params.require(:comment).permit(:commenter_name, :content, (:approved if current_user.role == "editor"))
   end
 end

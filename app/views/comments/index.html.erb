@@ -6,20 +6,20 @@
           <hr class="star-primary">
         </div>
       </div>
-      <%# if ArticlePolicy.new(current_user, @article).create? %>
+      <% if ArticlePolicy.new(current_user, @article).create? %>
         <%= link_to 'New comment', new_article_comment_path %>
-      <%# end %>
+      <% end %>
 
       <ul>
         <% @comments.each do |comment| %>
           <li class="comment" id="<%= dom_id(comment) %>"></li>
             <p><b><%= comment.commenter_name %></b> <%=comment.content %></p>
-              <%# if policy(comment).update? %>
+              <% if policy(comment).update? %>
                 <%= link_to 'Edit', edit_article_comment_path(@article, comment) %>
-              <%# end %>
-              <%# if policy(comment).destroy? %>
+              <% end %>
+              <% if policy(comment).destroy? %>
                 <%= link_to 'Delete', article_comment_path(@article, comment), method: :delete, data: {confirm: 'Are you sure?' } %>
-              <%# end %>
+              <% end %>
           </li>
         <% end %>
       </ul>

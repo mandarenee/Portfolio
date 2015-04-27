@@ -7,6 +7,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @articles = policy_scope(Article)
+    @comments = policy_scope(Comment)
     @article = Article.friendly.find(params[:id])
     redirect_to @article, status: :moved_permanently unless request.path == article_path(@article)
   end
@@ -17,7 +19,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
       current_user.articles << @article

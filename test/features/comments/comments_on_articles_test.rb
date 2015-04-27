@@ -17,112 +17,121 @@ feature "Comments On Articles" do
 # Editor's "rights"
   scenario "editor approves comments on article" do
     sign_in(:one)
-    create_article
-    sign_out
+    # create_article
     visit article_path("first-days-as-a-code-fellow")
     click_on "Comment"
-    fill_in "Content" with
-    page.must_have_content "Approved"
+    fill_in "Content", with: "Beautiful article!"
+    click_on "Create"
+    sign_out
+    sign_in(:user)
+    visit edit_article_path("first-days-as-a-code-fellow")
+    check "Approved"
+    click_on "Create"
+    page.must_have_content "Beautiful article!"
   end
 
   scenario "editor can write comments on article" do
     create_other_article
     sign_in(:user)
     visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
+    click_on "Comment"
+    fill_in "Content", with: "Sweet article!"
+    check "Approved"
+    click_on "Create"
+    page.must_have_content "Sweet article!"
   end
 
-  scenario "editor can see unapproved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "editor can see unapproved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "editor can see approved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "editor can see approved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-# Author's "rights"
-  scenario "author cannot approve comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+# # Author's "rights"
+#   scenario "author cannot approve comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "author can write unapproved comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "author can write unapproved comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "author can only see their own unapproved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "author can only see their own unapproved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "author can see approved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "author can see approved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-# Twitter visitor's "rights"
-  scenario "twitter visitor cannot approve comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+# # Twitter visitor's "rights"
+#   scenario "twitter visitor cannot approve comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "twitter visitor can write unapproved comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "twitter visitor can write unapproved comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "twitter visitor can only see their own unapproved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "twitter visitor can only see their own unapproved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "twitter visitor can see approved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "twitter visitor can see approved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-# Site visitor's "rights"
-  scenario "site visitor cannot approve comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+# # Site visitor's "rights"
+#   scenario "site visitor cannot approve comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "site visitor cannot write unapproved comments on article" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "site visitor cannot write unapproved comments on article" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 
-  scenario "site visitor can see approved comments on articles" do
-    create_other_article
-    sign_in(:user)
-    visit article_path("been-in-school-a-little-while")
-    page.must_have_content "Approved"
-  end
+#   scenario "site visitor can see approved comments on articles" do
+#     create_other_article
+#     sign_in(:user)
+#     visit article_path("been-in-school-a-little-while")
+#     page.must_have_content "Approved"
+#   end
 end

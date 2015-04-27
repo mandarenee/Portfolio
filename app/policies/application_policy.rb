@@ -56,6 +56,10 @@ class ApplicationPolicy
       false
     end
 
+    def unauthenticated?
+      true
+    end
+
     def author?
       false
     end

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
 
-  enum role: [:null_user, :author, :editor]
+  enum role: [:null_user, :author, :editor, :twitter_user]
   after_initialize :set_default_role, if: :new_record?
   has_many :articles, foreign_key: "author_id"
 
