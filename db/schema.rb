@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 20150331235627) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "author_id"
-    t.boolean  "published"
-    t.string   "author"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug"

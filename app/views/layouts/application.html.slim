@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Amanda Kom
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  header
+    .container
+      .row
+        .col-xs-6.col-sm-3
+          img.img-fluid.header-flower src="#{asset_url('Amanda Kom.JPG')}"
+        .col-xs-6.col-sm-9
+          h2.header-name Amanda Kom
+          .skills Rails & React Web Developer
+          = mail_to('mandakom@uw.edu', name='Email Me')
+          br
+          = link_to('See My Github', 'github.com/mandarenee/')
+          br
+          = link_to('Find Me on LinkedIn', 'linkedin.com/in/amandakom')
+
+  body
+
+    = render 'shared/navigation'
+
+    -flash.each do |key, value|
+      .alert-box.round = flash_class(key)
+        = value
+
+    #main-container.container-fluid
+      .row
+        #main-content.col-xs-12
+          = yield
