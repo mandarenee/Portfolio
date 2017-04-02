@@ -7,18 +7,19 @@ html
     = csrf_meta_tags
 
   header
-    .container
+    .headerBackground = image_tag("Beach.jpg")
+    .container.headerText
       .row
-        .col-xs-6.col-sm-3
-          img.img-fluid.header-flower src="#{asset_url('Amanda Kom.JPG')}"
-        .col-xs-6.col-sm-9
+        .col-sm-6
+        .col-sm-6.text-right
           h2.header-name Amanda Kom
-          .skills Rails & React Web Developer
-          = mail_to('mandakom@uw.edu', name='Email Me')
-          br
-          = link_to('See My Github', 'github.com/mandarenee/')
-          br
-          = link_to('Find Me on LinkedIn', 'linkedin.com/in/amandakom')
+          .header-skills Rails & React Web Developer
+          .header-contactMe
+            = link_to 'Find Me on LinkedIn', 'https://www.linkedin.com/in/amandakom'
+            br
+            = link_to 'See My Github', 'https://github.com/mandarenee'
+            br
+            = mail_to 'mandakom@uw.edu', name='Email Me'
 
   body
 
