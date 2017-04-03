@@ -21,7 +21,7 @@ feature "Comments On Articles" do
     sign_out
     visit article_path("first-days-as-a-code-fellow")
     click_on "Comment"
-    fill_in "Content" with
+    fill_in "Content", with: ''
     page.must_have_content "Approved"
   end
 

@@ -8,3 +8,10 @@ Help in formatting Bootstrap by Tealeaf Academy Blog: Integrating Rails and Boot
 
 
 [![Code Climate](https://codeclimate.com/github/mandarenee/Portfolio/badges/gpa.svg)](https://codeclimate.com/github/mandarenee/Portfolio)
+
+
+before bundle install:
+rvm use 2.3.0
+brew install imagemagick@6 && brew link imagemagick@6 --force
+xcode-select --install
+
