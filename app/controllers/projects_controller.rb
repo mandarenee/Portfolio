@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = ProjectPolicy::Scope.new(current_user, Project).resolve
     @uploader = Project.new.image
     @uploader.success_action_redirect = new_project_url
   end

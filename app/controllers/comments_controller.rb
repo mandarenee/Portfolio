@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
+  after_action :verify_policy_scoped, only: :index
+  skip_after_action :verify_authorized, only: :index
+  
   def index
     @article = Article.friendly.find(params[:article_id])
-    @comments = @article.comments
+    @comments = CommentPolicy::Scope.new(current_user, @article.comments).resolve
+    @articles = ArticlePolicy::Scope.new(current_user, Article).resolve
   end
 
   def show
@@ -12,13 +16,13 @@ class CommentsController < ApplicationController
   def new
     @article = Article.friendly.find(params[:article_id])
     @comment = @article.comments.build
-    @comment.commenter_name = current_user.name
+    @comment.commenter_name = current_user.name if current_user
   end
 
   def create
     @article = Article.friendly.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
-    @comment.commenter_name = current_user.name
+    @comment.commenter_name = current_user.name if current_user
     if @comment.save
       redirect_to article_comment_path(@article, @comment)
     else

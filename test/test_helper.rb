@@ -58,4 +58,17 @@ class ActiveSupport::TestCase
     click_on "Create Article"
     click_on "Sign Out"
   end
+
+  def setup_file_upload
+    test_photo = ActionDispatch::Http::UploadedFile.new({
+      :filename => 'test_photo_1.jpg',
+      :type => 'image/jpeg',
+      :tempfile => File.new("#{Rails.root}/test/files/test.jpg")
+    })
+    @photo = Photo.new(
+      :title => 'Uploaded photo', 
+      :description => 'Uploaded photo description', 
+      :filename => test_photo, 
+      :public => true)
+  end
 end

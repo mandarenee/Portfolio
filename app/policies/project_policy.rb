@@ -1,5 +1,5 @@
-class ArticlePolicy < ApplicationPolicy
-  attr_accessor :user, :article
+class ProjectPolicy < ApplicationPolicy
+  attr_accessor :user, :project
 
   def create?
     user.editor? || user.author?
@@ -10,7 +10,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.editor? || !record.published?
+    user.editor? || !record.image_processed?
   end
 
   def publish
@@ -26,13 +26,7 @@ class ArticlePolicy < ApplicationPolicy
     end
     
     def resolve
-      if @user.editor?
-        scope.all
-      elsif @user.author?
-        scope.where(author_id: user.id)
-      else
-        scope.where(published: true)
-      end
+      scope.all
     end
   end
 end

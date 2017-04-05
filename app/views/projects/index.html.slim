@@ -1,0 +1,21 @@
+section#portfolio
+    .container
+      .row
+        .col-lg-12
+          h3 Manda's Portfolio
+          hr.star-primary
+      - if ProjectPolicy.new(current_user, @projects).create?
+        = direct_upload_form_for @uploader do |f|
+          p = f.file_field :image
+          p = f.submit "Upload Image"
+
+      ul
+        - if @projects
+          - @projects.each do |project|
+            li.project id="#{ dom_id(project) }"
+              h4 = link_to "#{project.name}", project
+              p Technologies used: #{project.technologies_used}
+              - if ProjectPolicy.new(current_user, project).update?
+                .nav
+                  | #{link_to 'Show', project} | #{link_to 'Edit', edit_project_path(project)} | #{link_to 'Delete', project, method: :delete, data: {confirm: 'Are you sure?' }}
+      br

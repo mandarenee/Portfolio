@@ -2,12 +2,12 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user || NullUser.new
+    @user = user || User.new
     @record = record
   end
 
   def index?
-    false ##
+    false
   end
 
   def show?
@@ -36,28 +36,5 @@ class ApplicationPolicy
 
   def scope
     Pundit.policy_scope!(user, record.class)
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user || NullUser.new
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
-  end
-
-  class NullUser
-    def editor?
-      false
-    end
-
-    def author?
-      false
-    end
   end
 end

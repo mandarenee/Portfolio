@@ -4,6 +4,7 @@ gem 'rails', '4.1.1'
 group :test, :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'byebug'
 end
 
 group :production do
