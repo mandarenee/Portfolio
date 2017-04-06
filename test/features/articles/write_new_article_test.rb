@@ -15,7 +15,6 @@ feature "Write New Article" do
     # Then the article should be created and displayed
     page.must_have_content "Article was successfully created"
     page.must_have_content "it's worth it"
-    page.text.must_include "test1@test.com"
     page.text.must_include "Status: Unpublished"
   end
 

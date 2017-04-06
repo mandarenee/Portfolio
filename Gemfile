@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 group :test, :development do
   gem 'sqlite3'
   gem 'pry-rails'
@@ -42,7 +42,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog'
 gem 'fog-aws'
 gem 'carrierwave_direct'
 gem 'sidekiq'

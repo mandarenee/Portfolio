@@ -35,6 +35,10 @@ class ActiveSupport::TestCase
     click_on "Log in"
   end
 
+  def sign_out
+    click_on 'Sign Out'
+  end
+
   def create_article
     visit new_article_path
     fill_in "Title", with: "First days as a Code Fellow"
