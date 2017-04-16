@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :contact_forms
+
+  get 'contact_form/create'
+
   devise_for :users, path_names: {sign_in: "Sign In", sign_out: "Sign Out"},
                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users
