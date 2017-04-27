@@ -6,8 +6,9 @@ group :test, :development do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'byebug'
-  gem 'dotenv-rails'
 end
+
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 group :production do
 	gem 'pg'
