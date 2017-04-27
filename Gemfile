@@ -49,7 +49,7 @@ gem 'pundit'
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog-aws'
+gem 'fog'
 gem 'carrierwave_direct'
 gem 'sidekiq'
 
