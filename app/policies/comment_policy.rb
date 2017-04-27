@@ -17,8 +17,8 @@ class CommentPolicy < ApplicationPolicy
     @user.editor?
   end
 
-  class Scope < Scope
-    attr_reaer :user, :scope
+  class Scope
+    attr_reader :user, :scope
 
     def initialize(user, scope)
       @user = user || User.new
