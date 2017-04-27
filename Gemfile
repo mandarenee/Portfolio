@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 group :test, :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'byebug'
+  gem 'dotenv-rails'
 end
-gem 'pg',             group: :production
+
+group :production do
+	gem 'pg'
+end
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -14,14 +19,18 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
+end
 
 gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
-gem 'spring',        group: :development
+group :development do
+  gem 'spring'
+end
 
 gem "minitest-rails"
 
@@ -29,16 +38,16 @@ group :test do
   gem "minitest-rails-capybara"
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
 gem 'friendly_id'
 gem 'devise'
 gem 'pundit'
-gem 'dotenv-rails', :groups => [:development, :test]
 gem 'omniauth-twitter'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog'
 gem 'fog-aws'
 gem 'carrierwave_direct'
 gem 'sidekiq'

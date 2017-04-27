@@ -2,13 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users, path_names: {sign_in: "Sign In", sign_out: "Sign Out"},
                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :users
   resources :projects
   resources :articles do
     resources :comments
   end
 
-  root 'articles#index'
+  root 'welcome#index'
   get 'articles/index' => redirect('articles')
   get 'welcome', to: 'welcome#index'
 

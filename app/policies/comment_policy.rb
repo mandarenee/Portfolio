@@ -1,13 +1,5 @@
 class CommentPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      if user.editor?
-        scope.all
-      else
-        scope.where(published: true)
-      end
-    end
-  end
+  attr_accessor :user, :comment
 
   def create?
     user.editor? || user.author?
@@ -23,5 +15,22 @@ class CommentPolicy < ApplicationPolicy
 
   def publish
     @user.editor?
+  end
+
+  class Scope < Scope
+    attr_reaer :user, :scope
+
+    def initialize(user, scope)
+      @user = user || User.new
+      @scope = scope
+    end
+
+    def resolve
+      if user.editor?
+        scope.all
+      else
+        scope.where(approved: true)
+      end
+    end
   end
 end

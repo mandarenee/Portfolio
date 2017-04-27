@@ -39,6 +39,10 @@ div {
   color: green;
 }
 
+.alert-box {
+  padding-left: 50px;
+}
+
 .field_with_errors {
   background-color: red;
   display: table;
@@ -74,11 +78,81 @@ div {
   }
 }
 
-.header-flower {
-  margin-top: 20px;
+.headerBackground img {
+  height: 220px;
+  position: absolute;
   width: 100%;
+  @media only screen and (max-width : 690px) {
+    opacity: 0.5;
+  }
+}
+
+.headerText {
+  position: relative;
+}
+
+.container.headerText {
+  @media only screen and (max-width : 690px) {
+    padding-right: 30px;
+  }
+}
+
+header {
+  height: 220px;
 }
 
 .header-name {
+  margin-top: 20px;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.header-skills {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-contactMe {
+  font-size: 16px;
+  font-weight: bold;
+  a:link, a:visited, a:hover, a:active {
+    background-color: transparent;
+    color: #00645D;
+    text-decoration: none;
+  }
+}
+
+.container#menu {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.navItem {
+  font-size: 16px;
+  padding: 5px 10px 0 10px;
+  a:link, a:visited, a:hover, a:active {
+    background-color: transparent;
+    color: #00645D;
+    text-decoration: none;
+  }
+}
+
+ul#menu {
+  padding-left: 0;
+}
+
+ul#menu li {
+  display:inline;
+}
+
+footer {
+  background-color: #CBC7C6;
+  height: 60px;
+  margin-top: 30px;
+}
+
+.footerContainer {
   margin-top: 20px;
 }

@@ -15,6 +15,7 @@ Rails.application.configure do
   # Configure static asset server for tests with Cache-Control for performance.
   config.serve_static_assets  = true
   config.static_cache_control = 'public, max-age=3600'
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

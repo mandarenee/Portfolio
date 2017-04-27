@@ -1,15 +1,5 @@
 class ArticlePolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      if user.editor?
-        scope.all
-      elsif user.author?
-        user.articles + scope.where(published: true)
-      else
-        scope.where(published: true)
-      end
-    end
-  end
+  attr_accessor :user, :article
 
   def create?
     user.editor? || user.author?
@@ -25,5 +15,24 @@ class ArticlePolicy < ApplicationPolicy
 
   def publish
     @user.editor?
+  end
+
+  class Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user || User.new
+      @scope = scope
+    end
+    
+    def resolve
+      if @user.editor?
+        scope.all
+      elsif @user.author?
+        scope.where(author_id: user.id)
+      else
+        scope.where(published: true)
+      end
+    end
   end
 end

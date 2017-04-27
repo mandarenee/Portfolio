@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :authorize_article, only: [:edit, :update]
-  # before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
-    # @articles = policy_scope(Article)
+    @articles = ArticlePolicy::Scope.new(current_user, Article).resolve
   end
 
   def show
@@ -18,6 +17,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    authorize @article
 
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize @article
   end
 
   def update
@@ -39,11 +40,11 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # def publish
-  #   @article = Article.find(article_params)
-  #   @article.publish!
-  #   redirect_to @article
-  # end
+  def publish
+    @article = Article.find(article_params)
+    @article.publish!
+    redirect_to @article
+  end
 
   def destroy
     @article.destroy
@@ -56,12 +57,7 @@ class ArticlesController < ApplicationController
     @article = Article.friendly.find(params[:id])
   end
 
-  # def authorize_article
-  #   authorize Article
-  # end
-
   def article_params
-    # params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
   end
 end

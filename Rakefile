@@ -6,9 +6,15 @@ require 'rake/testtask'
 
 Rails.application.load_tasks
 
-Rake::TestTask.new("test:features" => "test:prepare") do |t|
+Rake::TestTask.new do |t|
   t.libs << "test"
   t.pattern = "test/**/*_test.rb"
+  # t.test_files = FileList['test/test*.rb']
+  t.verbose = true
 end
 
-Rake::Task["test:run"].enhance ["test:features"]
+# Rake::TestTask.new("test:features" => "test:prepare") do |t|
+#   t.libs << "test"
+# end
+
+# Rake::Task["test:run"].enhance ["test:features"]

@@ -35,6 +35,10 @@ class ActiveSupport::TestCase
     click_on "Log in"
   end
 
+  def sign_out
+    click_on 'Sign Out'
+  end
+
   def create_article
     visit new_article_path
     fill_in "Title", with: "First days as a Code Fellow"
@@ -57,5 +61,18 @@ class ActiveSupport::TestCase
     fill_in "Body", with: "I'm getting the hang of this"
     click_on "Create Article"
     click_on "Sign Out"
+  end
+
+  def setup_file_upload
+    test_photo = ActionDispatch::Http::UploadedFile.new({
+      :filename => 'test_photo_1.jpg',
+      :type => 'image/jpeg',
+      :tempfile => File.new("#{Rails.root}/test/files/test.jpg")
+    })
+    @photo = Photo.new(
+      :title => 'Uploaded photo', 
+      :description => 'Uploaded photo description', 
+      :filename => test_photo, 
+      :public => true)
   end
 end

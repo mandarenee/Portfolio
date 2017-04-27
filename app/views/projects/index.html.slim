@@ -1,0 +1,89 @@
+section#portfolio
+    .container
+      .row
+        .col-xs-12
+          h2.portfolioSubtitle ReactJS Work
+      .row
+        .col-xs-12.col-sm-3
+          h4 Stash Hotel Rewards
+          | Hotel name filter built on top of existing toggle filters using ReactJS with a combination of 
+          | Typeahead.js and a custom substring match, taking into account the use of accented letters.
+          br
+          | Matching happened against search result lists from 2 different sources.
+        .col-xs-12.col-sm-9.text-center
+          .safariBorder
+            = render 'shared/safari_search_border'
+            .porfolioGifs
+              =image_tag("/images/Hotel Name Filter 1 Low.gif")
+      .row
+        .col-xs-12.col-sm-3
+          h4 Stash Hotel Rewards
+          | A continued example of hotel name search filter showing the substring match and 
+          | the special character case.
+        .col-xs-12.col-sm-9.text-center
+          .safariBorder
+            = render 'shared/safari_search_border'
+            .porfolioGifs
+              =image_tag("/images/Hotel Name Filter 2 Low.gif")
+      .row
+        .col-xs-12.col-sm-3
+          h4 Stash Hotel Rewards
+          | In the non-partner search results, I added an ad for the company's credit card. 
+          | This feature included adding logic on top of existing reload on scroll logic so 
+          | the ad would always only appear once on the screen and it would always appear in 
+          | the middle when there are three hotel cards per line.
+
+        .col-xs-12.col-sm-9.text-center
+          .safariBorder
+            = render 'shared/safari_search_border'
+            .porfolioGifs.col-xs-12.text-center
+              =image_tag("/images/cc search results ad.gif")
+
+      .row
+        .col-xs-12
+          h2.portfolioSubtitle Front End Responsive Work
+      .row
+        .col-xs-12.col-sm-3
+          h4 Stash Hotel Rewards
+          | An example of one of the front-facing marketing pages built to responsive design specs 
+          | with page differences based on user state.
+        .col-xs-12.col-sm-9.text-center
+          .safariBorder
+            = render 'shared/safari_search_border'
+            .porfolioGifs.col-xs-12.text-center
+              =image_tag("/images/signed out cc.gif")
+
+      br
+      .row
+        .col-xs-12.col-sm-3
+          h4 Stash Hotel Rewards
+          | A redesign of a partner site built to design specs for desktop. I made design
+          | assumptions on responsive behavior and used flexbox for icons.
+          br
+          br
+          | Below is a picture of what page looked like before redesign.
+          .porfolioGifs
+            =image_tag("/images/Commons old.png")
+        .col-xs-12.col-sm-9.text-center
+          .safariBorder
+            = render 'shared/safari_search_border'
+          .porfolioGifs.col-xs-12.text-center
+            =image_tag("/images/commons responsive.gif")
+      /   .col-lg-12
+      /     h3 Manda's Portfolio
+      /     hr.star-primary
+      / - if ProjectPolicy.new(current_user, @projects).create?
+      /   = direct_upload_form_for @uploader do |f|
+      /     p = f.file_field :image
+      /     p = f.submit "Upload Image"
+
+      / ul
+      /   - if @projects
+      /     - @projects.each do |project|
+      /       li.project id="#{ dom_id(project) }"
+      /         h4 = link_to "#{project.name}", project
+      /         p Technologies used: #{project.technologies_used}
+      /         - if ProjectPolicy.new(current_user, project).update?
+      /           .nav
+      /             | #{link_to 'Show', project} | #{link_to 'Edit', edit_project_path(project)} | #{link_to 'Delete', project, method: :delete, data: {confirm: 'Are you sure?' }}
+      / br
