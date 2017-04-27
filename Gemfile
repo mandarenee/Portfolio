@@ -52,6 +52,7 @@ gem 'rmagick'
 gem 'fog'
 gem 'carrierwave_direct'
 gem 'sidekiq'
+gem 'puma'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
