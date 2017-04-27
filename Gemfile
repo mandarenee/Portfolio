@@ -2,13 +2,12 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '4.1.2'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 group :test, :development do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'byebug'
 end
-
-gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 group :production do
 	gem 'pg'
