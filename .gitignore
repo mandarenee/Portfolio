@@ -9,6 +9,7 @@
 
 /config/secrets.yml
 /.env
+/dump.rdb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
