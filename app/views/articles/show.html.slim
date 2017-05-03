@@ -6,11 +6,6 @@ p
   strong Body:
   = @article.body
 
-p#author
-  p
-    strong By:
-    = @article.author_id
-
 - if @article.published?
   p Status: Published
 - else

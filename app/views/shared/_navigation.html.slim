@@ -4,8 +4,8 @@ nav.navbar.navbar-default role="navigation"
       .container#menu
         .navItem = link_to 'About Me', welcome_path
         .navItem = link_to 'My portfolio', projects_path
+        .navItem = link_to 'My blog', articles_path
         .hidden
-          .navItem = link_to 'My blog', articles_path
           .navItem = link_to 'Contact Me', welcome_path
           - if current_user
             .navItem = link_to 'Sign Out', destroy_user_session_path, method: :delete
