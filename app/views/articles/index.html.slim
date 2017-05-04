@@ -1,9 +1,12 @@
 section#portfolio
   .container
     .row
-      - if ArticlePolicy.new(current_user, @article).create?
+      - if ArticlePolicy.new(current_user, @articles).create?
         .col-sm-12
           .pull-right = link_to 'New article', new_article_path 
+          - if current_user
+            br
+            .pull-right = link_to 'Sign Out', destroy_user_session_path, method: :delete
 
     - if @articles
       ul
