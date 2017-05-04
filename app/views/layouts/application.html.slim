@@ -6,33 +6,34 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  header
-    .headerBackground = image_tag("https://s3-us-west-2.amazonaws.com/akom-portfolio-pics/site-images/Beach.jpg")
-    .container.headerText
-      .row
-        .col-sm-6
-        .col-sm-6.text-right
-          h2.header-name Amanda Kom
-          .header-skills Rails & React Web Developer
-          .header-contactMe
-            = link_to 'Find Me on LinkedIn', 'https://www.linkedin.com/in/amandakom'
-            br
-            = link_to 'See My Github', 'https://github.com/mandarenee'
-            br
-            = mail_to 'mandakom@uw.edu', name='Email Me'
+  #container
+    body
+      #header
+        .headerBackground = image_tag("https://s3-us-west-2.amazonaws.com/akom-portfolio-pics/site-images/Beach.jpg")
+        .container.headerText
+          .row
+            .col-sm-6
+            .col-sm-6.text-right
+              h2.header-name Amanda Kom
+              .header-skills Rails & React Web Developer
+              .header-contactMe
+                = link_to 'Find Me on LinkedIn', 'https://www.linkedin.com/in/amandakom'
+                br
+                = link_to 'See My Github', 'https://github.com/mandarenee'
+                br
+                = mail_to 'mandakom@uw.edu', name='Email Me'
 
-  body
+      #body
+        = render 'shared/navigation'
 
-    = render 'shared/navigation'
+        -flash.each do |key, value|
+          .alert-box.round class=flash_class(key)
+            = value
 
-    -flash.each do |key, value|
-      .alert-box.round class=flash_class(key)
-        = value
-
-    #main-container.container-fluid
-      .row
-        #main-content.col-xs-12
-          = yield
-    footer.container-fluid
-      = render 'shared/footer'
+        #main-container.container-fluid
+          .row
+            #main-content.col-xs-12
+              = yield
+      #footer
+        = render 'shared/footer'
 
