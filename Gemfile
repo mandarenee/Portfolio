@@ -53,6 +53,7 @@ gem 'fog'
 gem 'carrierwave_direct'
 gem 'sidekiq'
 gem 'puma'
+gem 'tinymce-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

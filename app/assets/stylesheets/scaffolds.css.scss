@@ -1,9 +1,33 @@
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#header {
+  height: 220px;
+}
+
+#body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  padding-bottom: 100px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #CBC7C6;
 }
 
 p, ol, ul, td {
@@ -97,10 +121,6 @@ div {
   }
 }
 
-header {
-  height: 220px;
-}
-
 .header-name {
   margin-top: 20px;
   font-size: 45px;
@@ -145,12 +165,6 @@ ul#menu {
 
 ul#menu li {
   display:inline;
-}
-
-footer {
-  background-color: #CBC7C6;
-  height: 60px;
-  margin-top: 30px;
 }
 
 .footerContainer {
