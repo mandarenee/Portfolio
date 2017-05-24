@@ -10,7 +10,8 @@ html, body {
 }
 
 #header {
-  height: 220px;
+  padding-top: 10px;
+  height: 140px;
 }
 
 #body {
@@ -102,16 +103,12 @@ div {
   }
 }
 
-.headerBackground img {
-  height: 220px;
-  position: absolute;
-  width: 100%;
-  @media only screen and (max-width : 690px) {
-    opacity: 0.5;
-  }
-}
-
 .headerText {
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    padding-bottom: 20px;
+  }
   position: relative;
 }
 
@@ -146,11 +143,11 @@ div {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  padding: 15px;
+  padding: 0 15px;
 }
 
 .navItem {
-  font-size: 16px;
+  font-size: 13px;
   padding: 5px 10px 0 10px;
   a:link, a:visited, a:hover, a:active {
     background-color: transparent;
@@ -169,4 +166,15 @@ ul#menu li {
 
 .footerContainer {
   margin-top: 20px;
+}
+
+.turquoiseLine {
+  width: 100%;
+  border-top-color: #0099A2;
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+#body .navbar {
+  margin-bottom: 0;
 }

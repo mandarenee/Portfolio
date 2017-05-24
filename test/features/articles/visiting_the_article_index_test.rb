@@ -57,7 +57,7 @@ feature "Visiting the article index" do
     sign_in(:one)
     create_article
     click_on "Sign Out"
-    visit "/articles/first-days-as-a-code-fellow"
+    visit "/blog/first-days-as-a-code-fellow"
     page.wont_have_content "You need to sign in or sign up before continuing"
   end
 end

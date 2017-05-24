@@ -11,22 +11,21 @@ html
   #container
     body
       #header
-        .headerBackground = image_tag("https://s3-us-west-2.amazonaws.com/akom-portfolio-pics/site-images/Beach.jpg")
         .container.headerText
           .row
-            .col-sm-6
-            .col-sm-6.text-right
-              h2.header-name Amanda Kom
-              .header-skills Rails & React Web Developer
-              .header-contactMe
-                = link_to 'Find Me on LinkedIn', 'https://www.linkedin.com/in/amandakom'
-                br
-                = link_to 'See My Github', 'https://github.com/mandarenee'
-                br
-                = mail_to 'manda@mandakom.com', name='Email Me'
+            .hidden-xs.col-sm-3.col-md-4
+            .col-xs-12.col-sm-6.col-md-4.text-center
+              = image_tag("Logo.png")
+              /.header-contactMe
+                /= link_to 'Find Me on LinkedIn', 'https://www.linkedin.com/in/amandakom'
+                / br
+                / = link_to 'See My Github', 'https://github.com/mandarenee'
+                /br
+                /= mail_to 'manda@mandakom.com', name='Email Me'
 
       #body
         = render 'shared/navigation'
+        .turquoiseLine
 
         -flash.each do |key, value|
           .alert-box.round class=flash_class(key)
