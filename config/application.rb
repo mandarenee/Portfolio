@@ -21,6 +21,7 @@ module Portfolio
     config.generators do |g|
         g.test_framework :minitest, spec: true, fixture: false
     end
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
 
     # Settings in config/environments/* take precedence over those specified here.
