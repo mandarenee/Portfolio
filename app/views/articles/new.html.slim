@@ -1,0 +1,12 @@
+h3 New article
+
+ul.nav.nav-tabs role="tablist"
+  li = link_to 'View list', articles_path
+  li.active = link_to 'New article', new_article_path
+
+div.col-sm-offset-11
+  btn.btn-primary.btn-sm.active 
+    = link_to 'Back', articles_path
+
+= render 'form'
+
