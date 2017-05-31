@@ -12,12 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *=
-  @import "bootstrap-sprockets"
-  @import "bootstrap"
  */
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Raleway');
-@import "font-awesome";
-@import 'font-awesome.css';
