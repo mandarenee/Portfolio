@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def recent_posts
-    recent_posts = Article.first(3)
+    recent_posts = Article.where(published: true).first(3)
   end
 end

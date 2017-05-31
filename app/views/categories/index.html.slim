@@ -3,9 +3,6 @@
     - if CategoryPolicy.new(current_user, @categories).create?
       .col-sm-12
         .pull-right = link_to 'New category', new_category_path 
-        - if current_user
-          br
-          .pull-right = link_to 'Sign Out', destroy_user_session_path, method: :delete
 
   - @categories.each do |category|
     .row.categoryBlock

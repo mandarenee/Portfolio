@@ -27,7 +27,6 @@ feature "Visiting the article index" do
     click_on "Create Article"
     visit articles_path
     page.text.must_include "Been in school"
-    page.wont_have_content "First days"
     page.wont_have_content "published"
   end
 
@@ -48,7 +47,7 @@ feature "Visiting the article index" do
   scenario "Visitors CANNOT see the UNpublished articles index" do
     sign_in(:one)
     create_article
-    click_on "Sign Out"
+    click_on 'Sign Out'
     visit articles_path
     page.wont_have_content "Unpublished"
   end
