@@ -16,7 +16,8 @@ html
           .row
             .hidden-xs.col-sm-3.col-md-4
             .col-xs-12.col-sm-6.col-md-4.text-center
-              = image_tag("Logo.png")
+              = link_to welcome_path do
+                = image_tag("Logo.png")
 
       #body
         .container
