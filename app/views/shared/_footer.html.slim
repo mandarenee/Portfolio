@@ -1,5 +1,14 @@
 .container.footerContainer
-  .row.text-center
-    | This site was designed and developed in Ruby on Rails by Amanda Kom, &copy; #{Time.current.year}. All Rights Reserved.
-    br
-    | Favicon made by #{link_to 'Freepik', 'http://www.freepik.com'} from #{link_to 'www.flaticon.com', 'http://www.flaticon.com'} is licensed by #{ link_to 'CC 3.0 BY', 'http://creativecommons.org/licenses/by/3.0/', target: '_blank' }
+  .row.text-center.footerSocial
+    /a href='#' target='_blank'
+      /= fa_icon "youtube-play 2x"
+    a href='https://www.facebook.com/mandakomblog/' target='_blank'
+      = fa_icon 'facebook-f 2x'
+    a href='https://twitter.com/AmandaKom' target='_blank'
+      = fa_icon 'twitter 2x'
+    a href='https://www.pinterest.com/manda_kom/' target='_blank'
+      = fa_icon 'pinterest-p 2x'
+    a href='https://www.instagram.com/mandakom/' target='_blank'
+      = fa_icon 'instagram 2x'
+    
+    .contrastText This site was designed and developed in Ruby on Rails by Amanda Kom, &copy; #{Time.current.year}. All Rights Reserved.

@@ -1,0 +1,14 @@
+h2
+  = @category.name
+  
+- @category.articles.each do |article|
+    .articleBlock
+      = link_to article_path(article.id) do
+        - if article.image.url != "/images/original/missing.png"
+          = image_tag article.image.url(:thumb)
+        .categoryArticleTitle = article.title
+        .categoryArticleDate = article.created_at.strftime("%b %d, %Y")
+
+- if CategoryPolicy.new(current_user, @category).update?
+  = link_to 'Edit Category', edit_category_path(@category)
+  = link_to 'Delete Category', @category, method: :delete, data: {confirm: 'Are you sure?' } 

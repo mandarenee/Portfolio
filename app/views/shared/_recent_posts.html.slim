@@ -1,0 +1,4 @@
+.textCenter
+  .sidebarTitle Recent Posts
+  - recent_posts.each do |post|
+    .sidebarRecentPost = link_to post.title, article_path(post.id)

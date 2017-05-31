@@ -1,25 +1,24 @@
 section#blog
-  .container
-    .row
-      - if ArticlePolicy.new(current_user, @articles).create?
-        .col-sm-12
-          .pull-right = link_to 'New article', new_article_path 
-          - if current_user
-            br
-            .pull-right = link_to 'Sign Out', destroy_user_session_path, method: :delete
+  .row
+    - if ArticlePolicy.new(current_user, @articles).create?
+      .col-sm-12
+        .pull-right = link_to 'New article', new_article_path 
+        - if current_user
+          br
+          .pull-right = link_to 'Sign Out', destroy_user_session_path, method: :delete
 
-    - if @articles
-      ul
-        - @articles.each do |article|
-          .row.articleRow
-            .col-lg-12
-              li.article id="#{ dom_id(article) }"
-                .articles-articleTitle = link_to article.title, article
-                .articleDate = article.created_at.strftime("%b %d, %Y")
-                .nav
-                  - if ArticlePolicy.new(current_user, article).update?
-                    = link_to 'Edit', edit_article_path(article)
-                  - if ArticlePolicy.new(current_user, article).destroy?
-                    = link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?' }
-          hr.star-primary
-    br
+  - if @articles
+    ul
+      - @articles.each do |article|
+        .row.articleRow
+          .col-lg-12
+            li.article id="#{ dom_id(article) }"
+              .articles-articleTitle = link_to article.title, article
+              .articleDate = article.created_at.strftime("%b %d, %Y")
+              .nav
+                - if ArticlePolicy.new(current_user, article).update?
+                  = link_to 'Edit', edit_article_path(article)
+                - if ArticlePolicy.new(current_user, article).destroy?
+                  = link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?' }
+        hr.star-primary
+  br

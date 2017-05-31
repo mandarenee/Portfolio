@@ -9,6 +9,11 @@
           li = message
 
     .field
+      = f.label :image
+      br
+      = f.file_field :image
+
+    .field
       = f.label :title
       br
       = f.text_field :title
@@ -21,6 +26,9 @@
       .field
        = f.label :published
        = f.check_box :published
+
+    .field
+      = f.select :category_ids, options_from_collection_for_select(@categories, 'id', 'name'), {include_blank: false}, {multiple: true}
     
     .actions
       = f.submit

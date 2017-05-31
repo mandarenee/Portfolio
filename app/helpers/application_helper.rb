@@ -7,4 +7,8 @@ module ApplicationHelper
     when "alert" then "alert-error"
     end
   end
+
+  def recent_posts
+    recent_posts = Article.first(3)
+  end
 end

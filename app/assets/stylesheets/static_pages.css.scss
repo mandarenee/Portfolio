@@ -1,0 +1,36 @@
+@import "variables";
+
+.hireMe {
+  a {
+    color: $turquoise;
+    &:visited {
+      color: $turquoise;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $turquoise;
+    }
+  }
+}
+
+.sidebarSocial {
+  a {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+#home {
+  a {
+    color: $blackish;
+    &:visited {
+      color: $blackish;
+    }
+    &:hover {
+      background-color: transparent;
+      text-decoration: none;
+      color: $blackish;
+    }
+  }
+}

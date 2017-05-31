@@ -1,3 +1,5 @@
+@import "variables";
+
 html, body {
   margin: 0;
   padding: 0;
@@ -20,15 +22,16 @@ html, body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 }
 
 #footer {
-  position: absolute;
+  background-color: $turquoise;
   bottom: 0;
+  height: 100px;
+  margin-top: 20px;
+  position: absolute;
   width: 100%;
-  height: 60px;
-  background-color: #CBC7C6;
 }
 
 p, ol, ul, td {
@@ -49,7 +52,7 @@ a {
     color: #666;
   }
   &:hover {
-    background-color: #000;
+    background-color: transparent;
     color: #fff;
   }
 }
@@ -143,15 +146,17 @@ div {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  margin-top: 10px;
   padding: 0 15px;
 }
 
 .navItem {
-  font-size: 13px;
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
   padding: 5px 10px 0 10px;
   a:link, a:visited, a:hover, a:active {
     background-color: transparent;
-    color: #00645D;
+    color: $blackish;
     text-decoration: none;
   }
 }
@@ -168,13 +173,173 @@ ul#menu li {
   margin-top: 20px;
 }
 
+.tanBanner {
+  a {
+    color: $blackish;
+    &:visited {
+      color: $blackish;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $blackish;
+    }
+  }
+  color: $blackish;
+  font-family: 'Raleway', sans-serif;
+  background-color: $tan;
+  height: 30px;
+  padding: 5px;
+  width: 100%;
+}
+
 .turquoiseLine {
   width: 100%;
-  border-top-color: #0099A2;
+  border-top-color: $turquoise;
   border-top-width: 2px;
   border-top-style: solid;
 }
 
 #body .navbar {
   margin-bottom: 0;
+}
+
+#sidebar {
+  color: $blackish;
+  margin-top: 20px;
+  a {
+    color: $blackish;
+    &:visited {
+      color: $blackish;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $blackish;
+    }
+  }
+}
+
+.sidebarTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.sidebarImage img {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.sidebarText {
+  font-family: 'Raleway', sans-serif;
+  line-height: 16px;
+}
+
+.sidebarSocial i {
+  color: $deep-pink;
+  padding: 4px;
+}
+
+.sidebarRecentPost {
+  margin-top: 7px;
+}
+
+h2.pageTitle {
+  font-family: 'Playfair Display', serif;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+}
+
+.contrastText {
+  color: $tan;
+}
+
+.footerSocial i {
+  color: $tan;
+  padding: 0 8px 10px 8px;
+}
+
+.bannerRightItem {
+  display: inline;
+  padding-left: 15px;
+}
+
+#main-container {
+  @media only screen and (min-width : 760px) and (max-width: 1100px) {
+    margin-right: 25px;
+  }
+  @media only screen and (min-width : 1100px) {
+    margin-right: 80px;
+  }
+}
+
+.articleImage img {
+  width: 100%;
+}
+
+.categoryBlock {
+  a {
+    color: $blackish;
+  }
+  a {
+    color: $blackish;
+    &:visited {
+      color: $blackish;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $blackish;
+    }
+  }
+  display: block;
+  h2 {
+    margin: 5px 0;
+  }
+  margin-bottom: 20px;
+}
+
+.seaGreenLine {
+  width: 100%;
+  border-top-color: $sea-green;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.categoriesPage {
+  margin-top: 20px;
+}
+
+.articleBlock {
+  display: inline-block;
+  margin-left: 25px;
+  vertical-align: top;
+  width: 150px;
+}
+
+.categoryArticleTitle {
+  color: $deep-pink;
+  font-size: 12px;
+  line-height: 12px;
+  margin-top: 10px;
+  a {
+    color: $deep-pink;
+  }
+  a {
+    color: $deep-pink;
+    &:visited {
+      color: $deep-pink;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $deep-pink;
+    }
+  }
+}
+
+.categoryArticleDate {
+  color: #CBC7C6;
+  font-size: 10px;
 }

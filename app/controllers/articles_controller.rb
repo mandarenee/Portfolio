@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @categories = Category.all
   end
 
   def create
@@ -29,10 +30,12 @@ class ArticlesController < ApplicationController
 
   def edit
     authorize @article
+    @categories = Category.all
   end
 
   def update
     @article = Article.friendly.find(params[:id])
+
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
@@ -58,6 +61,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, (:published if current_user.role == "editor"))
+    params.require(:article).permit(:title, :body, :image, (:published if current_user.role == "editor"), :category_ids => [])
   end
 end
