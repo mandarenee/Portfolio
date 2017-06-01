@@ -7,4 +7,8 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :categories
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
+
+  def self.search(query)
+    where("body like ? or title like ?", "%#{query}%", "%#{query}%")
+  end
 end

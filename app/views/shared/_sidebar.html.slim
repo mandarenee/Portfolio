@@ -1,4 +1,4 @@
-#sidebar
+.container#sidebar
   .row
     .text-center
       .sidebarTitle About Me
@@ -30,7 +30,11 @@
     = render 'shared/recent_posts'
 
   / TODO: Add search bar
-  /.row
-    /.text-center
-      /.sidebarTitle Search
-      / searchbar
+  .row
+    .text-center
+      .sidebarTitle Search
+      = form_tag(articles_path, method: 'get', class: 'navbar-form', role: 'search') do
+        .input-group
+          = text_field_tag :search, params[:search], size: 50, placeholder: 'Search for keywords', class: 'form-control'
+          button type='submit' class='btn btn-default'
+            | Search
