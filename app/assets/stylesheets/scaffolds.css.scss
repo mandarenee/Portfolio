@@ -108,6 +108,15 @@ div {
 
 .headerText {
   img {
+    @media only screen and (max-width : 767px) {
+      margin-top: 45px;
+    }
+    @media only screen and (min-width : 768px) and (max-width: 1199px) {
+      margin-top: 20px;
+    }
+    @media only screen and (min-width: 1200px) {
+      margin-top: 25px;
+    }
     max-height: 100%;
     max-width: 100%;
     padding-bottom: 20px;
@@ -154,7 +163,13 @@ div {
     font-size: 20px;
     font-family: 'Playfair Display', serif;
   }
-  padding: 5px 10px 0 10px;
+  @media only screen and (max-width: 1199px) {
+    padding: 5px 10px 0 10px;
+  }
+  @media only screen and (min-width: 1200px) {
+    padding: 0px 10px;
+  }
+
   a:link, a:visited, a:hover, a:active {
     background-color: transparent;
     color: $blackish;
@@ -185,6 +200,10 @@ div {
   }
 }
 
+.tanBanner .hidden-xs.col-sm-6 {
+  z-index: 100;
+}
+
 .tanBanner {
   @media only screen and (max-width : 767px) {
     height: 50px;
@@ -194,6 +213,7 @@ div {
   }
   background-color: $tan;
   padding: 5px;
+  position: absolute;
   width: 100%;
 }
 
@@ -204,10 +224,15 @@ div {
   border-top-style: solid;
 }
 
-#body .navbar {
-  margin-bottom: 0;
-  border: none;
+@media only screen and (max-width: 767px) {
+  #body .navbar {
+    position: absolute !important;
+  }
 }
+#body .navbar {
+    margin-bottom: 0;
+    border: none;
+  }
 
 .container#sidebar {
   width: 100%;
@@ -378,16 +403,19 @@ button.navbar-toggler {
   @media only screen and (max-width : 767px) {
     top: 0;
     right: 0;
-    position: fixed;
+    position: absolute;
   }
 }
 
 .turquoiseLine-second {
+  @media only screen and (max-width: 513px) {
+    margin-top: 40px;
+  }
   @media only screen and (min-width: 514px) and (max-width: 600px) {
-    margin-top: 30px;
+    margin-top: 60px;
   }
   @media only screen and (min-width: 601px) and (max-width: 767px) {
-    margin-top: 80px;
+    margin-top: 100px;
   }
 }
 
