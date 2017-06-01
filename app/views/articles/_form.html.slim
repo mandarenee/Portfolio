@@ -26,6 +26,7 @@
       .field
        = f.label :published
        = f.check_box :published
+       
     - @article.categories.each do |category|
       = category.name
       br

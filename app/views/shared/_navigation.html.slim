@@ -1,10 +1,14 @@
-nav.navbar role="navigation"
-    .navbar-header.text-center
-      .container#menu
-        .navItem = link_to 'Home', welcome_path
-        .navItem = link_to 'About Me', about_me_path
-        /.navItem = link_to 'Portfolio', projects_path
-        .navItem = link_to 'Obsessions du Jour', categories_path
-        .navItem = link_to 'Contact Me', contact_me_path
+nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+  .pull-right.navbar-toggler.navbar-toggler-right data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    .visible-xs
+      i.fa.fa-bars.fa-2x
+  div.collapse.navbar-collapse#navbarSupportedContent
+    .container#menu
+      ul.navbar-nav.mr-auto
+        li.nav-item.navItem = link_to 'Home', welcome_path
+        li.nav-item.navItem = link_to 'About Me', about_me_path
+          /.nav-item.navItem = link_to 'Portfolio', projects_path
+        li.nav-item.navItem = link_to 'Obsessions du Jour', categories_path
+        li.nav-item.navItem = link_to 'Contact Me', contact_me_path
         - if current_user
-          .navItem = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          li.nav-item.navItem = link_to 'Sign Out', destroy_user_session_path, method: :delete

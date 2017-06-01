@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = ArticlePolicy::Scope.new(current_user, Article).resolve
+    if params[:search]
+      @articles = Article.search(params[:search]).where(published: true).order("created_at DESC")
+    else
+      @articles = ArticlePolicy::Scope.new(current_user, Article).resolve
+    end
   end
 
   def show
