@@ -4,6 +4,7 @@ Rails.application.routes.draw do
                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :projects
   resources :categories, path: "obsessions_du_jour"
+  resources :subscribers
   resources :articles, path: "blog" do
     resources :comments
   end

@@ -1,0 +1,18 @@
+= form_for(subscriber, remote: true) do |f|
+  - if subscriber.errors.any?
+    #error_explanation
+      h2 #{pluralize(subscriber.errors.count, "error")} prohibited this article from being saved:
+
+      ul
+      - subscriber.errors.full_messages.each do |message|
+        li = message
+
+  .field
+    = f.text_field :first_name, placeholder: 'First Name'
+
+  .field
+    = f.text_field :email, placeholder: 'Email Address'
+  
+  .actions
+    = f.button :submit, class: 'btn' do
+      | Subscribe

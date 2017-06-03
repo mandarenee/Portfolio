@@ -31,6 +31,7 @@ gem 'autoprefixer-rails'
 
 group :development do
   gem 'spring'
+  gem "letter_opener"
 end
 
 gem "minitest-rails"
@@ -56,6 +57,7 @@ gem 'puma'
 gem 'tinymce-rails'
 gem 'paperclip'
 gem 'aws-sdk'
+gem "gibbon"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
