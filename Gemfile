@@ -42,6 +42,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'remote_syslog_logger'
 end
 
 gem 'friendly_id'
