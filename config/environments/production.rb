@@ -38,6 +38,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+  config.logger = RemoteSyslogLogger.new(ENV["PRODUCTION_LOG_DESTINATION"], ENV["PRODUCTION_LOG_PORT"])
 
   # Generate digests for assets URLs.
   config.assets.digest = true
