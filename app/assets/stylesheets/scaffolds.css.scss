@@ -384,8 +384,21 @@ form.navbar-form {
   margin-bottom: 10px !important;
 }
 
+.input-group {
+  width: 100%;
+}
+
 .input-group .form-control {
   border-radius: 0;
+  font-family: 'Raleway', sans-serif;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: white;
+  background-image: none;
+  border: 1px solid #cccccc;
 }
 
 button.btn.btn-default {
@@ -446,4 +459,40 @@ button.navbar-toggler {
 i.fa.fa-bars.fa-2x {
   padding-right: 10px;
   padding-top: 10px;
+}
+
+.new_subscriber {
+  input {
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: white;
+    background-image: none;
+    border: 1px solid #cccccc;
+  }
+
+  .btn {
+    background-color: #ff6f69;
+    color: #e4ded0;
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+#subscribeMessage {
+  margin: 5px 0;
+  padding: 5px;
+  font-family: Raleway;
+  line-height: 14px;
+}
+
+.successMessage {
+  background-color: $sea-green;
+}
+
+.failureMessage {
+  background-color: $deep-pink;
 }

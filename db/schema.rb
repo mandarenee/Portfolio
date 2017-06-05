@@ -11,46 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530205357) do
+ActiveRecord::Schema.define(version: 20170602033200) do
 
-  create_table "articles", force: true do |t|
-    t.string   "title"
+  create_table "articles", force: :cascade do |t|
+    t.string   "title",              limit: 255
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string   "slug",               limit: 255
     t.integer  "author_id"
     t.boolean  "published"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug"
 
-  create_table "articles_categories", id: false, force: true do |t|
+  create_table "articles_categories", id: false, force: :cascade do |t|
     t.integer "article_id"
     t.integer "category_id"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string   "slug",       limit: 255
     t.integer  "author_id"
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug"
 
-  create_table "comments", force: true do |t|
-    t.string   "commenter_name"
-    t.string   "commenter_url"
-    t.string   "commenter_email"
-    t.string   "user_ip"
-    t.string   "user_agent"
-    t.string   "referrer"
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter_name",  limit: 255
+    t.string   "commenter_url",   limit: 255
+    t.string   "commenter_email", limit: 255
+    t.string   "user_ip",         limit: 255
+    t.string   "user_agent",      limit: 255
+    t.string   "referrer",        limit: 255
     t.text     "content"
     t.boolean  "approved"
     t.integer  "article_id"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20170530205357) do
     t.datetime "updated_at"
   end
 
-  create_table "friendly_id_slugs", force: true do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",               null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope"
+    t.string   "scope",          limit: 255
     t.datetime "created_at"
   end
 
@@ -71,17 +71,24 @@ ActiveRecord::Schema.define(version: 20170530205357) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.string   "technologies_used"
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",              limit: 255
+    t.string   "technologies_used", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.string   "image",             limit: 255
     t.boolean  "image_processed"
   end
 
-  create_table "todo_items", force: true do |t|
-    t.string   "name"
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todo_items", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "description"
     t.integer  "user_id"
     t.boolean  "finished"
@@ -89,23 +96,23 @@ ActiveRecord::Schema.define(version: 20170530205357) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.integer  "role"
-    t.string   "name"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "name",                   limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

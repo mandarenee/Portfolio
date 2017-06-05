@@ -19,17 +19,16 @@
     a href='https://www.instagram.com/mandakom/' target='_blank'
       i.fa.fa-instagram.fa-2x
 
-  / TODO: Add subscription form to sidebar
-  /.row
-  /  .text-center
-  /    .sidebarTitle Subscribe
-  /    .sidebarText Join my tribe!
-  /    = render 'shared/subscription_form'
+  .row
+   .text-center
+     .sidebarTitle Subscribe
+     .sidebarText Join my tribe!
+     #subscribeMessage
+     = render partial: 'subscribers/form', locals: {subscriber: Subscriber.new}
 
   .row
     = render 'shared/recent_posts'
 
-  / TODO: Add search bar
   .row
     .text-center
       .sidebarTitle Search
