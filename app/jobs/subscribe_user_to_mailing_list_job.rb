@@ -3,6 +3,6 @@ class SubscribeUserToMailingListJob < ActiveJob::Base
 
   def perform(subscriber)
     gb = Gibbon::Request.new
-    gb.lists.subscribe({ id: ENV["MAILCHIMP_LIST_ID"], email: { email: subscriber.email, merge_vars: { FNAME: subscriber.first_name} }, double_optin: false })
+    gb.lists(ENV["MAILCHIMP_LIST_ID"]).members.create(body: {email_address: subscriber.email, status: 'subscribed', merge_fields: {FNAME: subscriber.first_name}})
   end
 end
