@@ -1,4 +1,4 @@
-Rails.application.configure do
+Rails.application.config do
   config.action_mailer.smtp_settings = {
     address: "smtp.mandrillapp.com",
     port: 25,
@@ -6,6 +6,6 @@ Rails.application.configure do
     user_name: ENV["MANDRILL_USERNAME"],
     password: ENV["MANDRILL_API_KEY"],
     authentication: 'login',
-    domain: 'aspiringwebdev.com'
+    domain: 'mandakom.com'
   }
 end
