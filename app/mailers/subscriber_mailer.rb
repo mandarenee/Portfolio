@@ -1,8 +1,7 @@
 class SubscriberMailer < ApplicationMailer
-  default from: 'manda@mandakom.com'
 
   def welcome_email(subscriber)
     @subscriber = subscriber
-    mail(to: @subscriber.email, subject: 'Welcome to MandaKom.com')
+    mail(to: @subscriber.email, subject: 'Welcome to MandaKom.com', from: ENV["DEFAULT_FROM"])
   end
 end
