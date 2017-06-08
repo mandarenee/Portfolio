@@ -1,0 +1,20 @@
+h2
+  = @recipe_tag.name
+
+- if RecipePolicy.new(current_user, @recipes).create?
+      .col-sm-12
+        .pull-right = link_to 'New recipe tag', new_recipe_path
+  
+- @recipe_tag.recipes.each do |recipe|
+  - if recipe.published
+    .articleBlock
+      = link_to recipe_path(recipe.id) do
+        - if recipe.image.url != "/images/original/missing.png"
+          = image_tag recipe.image.url(:thumb)
+        .categoryArticleTitle = recipe.title
+        .categoryArticleDate = recipe.created_at.strftime("%b %d, %Y")
+- if RecipeTagPolicy.new(current_user, @recipe_tag).update?
+  .row
+    = link_to 'Edit recipe tag', edit_recipe_tag_path(@recipe_tag)
+    br
+    = link_to 'Delete recipe tag', @recipe_tag, method: :delete, data: {confirm: 'Are you sure?' } 

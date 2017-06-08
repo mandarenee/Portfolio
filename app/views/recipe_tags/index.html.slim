@@ -1,0 +1,20 @@
+.categoriesPage
+  .row
+    - if RecipeTagPolicy.new(current_user, @categories).create?
+      .col-sm-12
+        .pull-right = link_to 'New recipe tag', new_recipe_tag_path 
+
+  - @recipe_tags.each do |recipe_tag|
+    .row.categoryBlock
+      .seaGreenLine
+      h2 = link_to recipe_tag.name, recipe_tag_path(recipe_tag.id)
+      .seaGreenLine
+      br
+      -recipe_tag.recipes.each do |recipe|
+        - if recipe.published
+          .articleBlock
+            = link_to recipe_path(recipe.id) do
+              - if recipe.image.url != "/images/original/missing.png"
+                = image_tag article.image.url(:thumb)
+              .categoryArticleTitle = recipe.title
+              .categoryArticleDate = recipe.created_at.strftime("%b %d, %Y")
