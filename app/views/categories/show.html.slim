@@ -5,19 +5,19 @@
   .seaGreenLine
   br
 
-- if RecipeTagPolicy.new(current_user, @recipes).create?
-      .col-sm-12
-        .pull-right = link_to 'New recipe tag', new_recipe_tag_path
-        br
-        .pull-right = link_to 'New recipe', new_recipe_tag_path 
+  - if RecipeTagPolicy.new(current_user, @recipes).create?
+    .col-sm-12
+      .pull-right = link_to 'New recipe tag', new_recipe_tag_path
+      br
+      .pull-right = link_to 'New recipe', new_recipe_tag_path 
   
-- @category.articles.each do |article|
-  .articleBlock
-    = link_to article_path(article.id) do
-      - if article.image.url != "/images/original/missing.png"
-        = image_tag article.image.url(:thumb)
-      .categoryArticleTitle = article.title
-      .categoryArticleDate = article.created_at.strftime("%b %d, %Y")
+  - @category.articles.each do |article|
+    .articleBlock
+      = link_to article_path(article.id) do
+        - if article.image.url != "/images/original/missing.png"
+          = image_tag article.image.url(:thumb)
+        .categoryArticleTitle = article.title
+        .categoryArticleDate = article.created_at.strftime("%b %d, %Y")
 
 
 - @recipe_tags.each do |recipe_tag|
