@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.friendly.find(params[:id])
+    @recipe_tags = @category.recipes.map{|recipe| recipe.recipe_tags.all }.flatten.uniq
   end
 
   def new
@@ -25,6 +26,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.friendly.find(params[:id])
     authorize @category
   end
 

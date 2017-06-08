@@ -1,11 +1,11 @@
-- if ArticlePolicy.new(current_user, @article).create? || ArticlePolicy.new(current_user, @article).update?
-  = form_for(@article) do |f|
-    - if @article.errors.any?
+- if RecipePolicy.new(current_user, @recipe).create? || RecipePolicy.new(current_user, @recipe).update?
+  = form_for(@recipe) do |f|
+    - if @recipe.errors.any?
       #error_explanation
-        h2 #{pluralize(@article.errors.count, "error")} prohibited this article from being saved:
+        h2 #{pluralize(@recipe.errors.count, "error")} prohibited this recipe from being saved:
 
         ul
-        - @article.errors.full_messages.each do |message|
+        - @recipe.errors.full_messages.each do |message|
           li = message
 
     .field
@@ -26,13 +26,12 @@
       .field
        = f.label :published
        = f.check_box :published
-       
-    - @article.categories.each do |category|
-      br
-      = category.name
 
     .field
       = f.select :category_ids, options_from_collection_for_select(@categories, 'id', 'name', f.object.categories.pluck(:id)), {include_blank: false}, {multiple: true}
+
+    .field
+      = f.select :recipe_tag_ids, options_from_collection_for_select(@recipe_tags, 'id', 'name', f.object.recipe_tags.pluck(:id)), {include_blank: false}, {multiple: true}
     
     .actions
       = f.submit

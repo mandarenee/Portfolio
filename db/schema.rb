@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602033200) do
+ActiveRecord::Schema.define(version: 20170607234326) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(version: 20170602033200) do
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug"
+
+  create_table "categories_recipes", id: false, force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "category_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter_name",  limit: 255
@@ -79,6 +84,34 @@ ActiveRecord::Schema.define(version: 20170602033200) do
     t.string   "image",             limit: 255
     t.boolean  "image_processed"
   end
+
+  create_table "recipe_tags", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_tags_recipes", id: false, force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "recipe_tag_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "author_id"
+    t.boolean  "published"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "recipes", ["slug"], name: "index_recipes_on_slug"
 
   create_table "subscribers", force: :cascade do |t|
     t.string   "email"

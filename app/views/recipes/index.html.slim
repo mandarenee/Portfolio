@@ -1,0 +1,21 @@
+section#blog
+  .row
+    - if RecipePolicy.new(current_user, @recipes).create?
+      .col-sm-12
+        .pull-right = link_to 'New recipe', new_recipe_path 
+
+  - if @recipes
+    ul
+      - @recipes.each do |recipe|
+        .row.articleRow
+          .col-lg-12
+            li.article id="#{ dom_id(recipe) }"
+              .articles-articleTitle = link_to recipe.title, recipe
+              .articleDate = recipe.created_at.strftime("%b %d, %Y")
+              .nav
+                - if RecipePolicy.new(current_user, recipe).update?
+                  = link_to 'Edit', edit_recipe_path(recipe)
+                - if RecipePolicy.new(current_user, recipe).destroy?
+                  = link_to 'Delete', recipe, method: :delete, data: {confirm: 'Are you sure?' }
+        hr.star-primary
+  br

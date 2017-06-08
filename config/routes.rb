@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, path_names: {sign_in: "Sign In", sign_out: "Sign Out"},
                      controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :projects
   resources :categories, path: "obsessions_du_jour"
+  resources :recipe_tags
+  resources :recipes
   resources :subscribers
   resources :articles, path: "blog" do
     resources :comments

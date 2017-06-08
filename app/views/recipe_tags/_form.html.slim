@@ -1,0 +1,17 @@
+- if RecipeTagPolicy.new(current_user, @recipe_tag).create? || RecipeTagPolicy.new(current_user, @recipe_tag).update?
+  = form_for(@recipe_tag) do |f|
+    - if @recipe_tag.errors.any?
+      #error_explanation
+        h2 #{pluralize(@recipe_tag.errors.count, "error")} prohibited this recipe tag from being saved:
+
+        ul
+        - @recipe_tag.errors.full_messages.each do |message|
+          li = message
+
+    .field
+      = f.label :name
+      br
+      = f.text_field :name
+    
+    .actions
+      = f.submit

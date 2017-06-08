@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   enum role: [:null_user, :author, :editor]
   after_initialize :set_default_role, if: :new_record?
   has_many :articles, foreign_key: "author_id"
+  has_many :recipes, foreign_key: "author_id"
 
   def set_default_role
     self.role ||= :null_user
