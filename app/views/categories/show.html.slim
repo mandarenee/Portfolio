@@ -13,7 +13,7 @@
   
   - @category.articles.each do |article|
     .articleBlock
-      = link_to article_path(article.id) do
+      = link_to article_path(article) do
         - if article.image.url != "/images/original/missing.png"
           = image_tag article.image.url(:thumb)
         .categoryArticleTitle = article.title
@@ -30,7 +30,7 @@
     - recipe_tag.recipes.each do |recipe|
       - if recipe.published
         .articleBlock
-          = link_to recipe_path(recipe.id) do
+          = link_to recipe_path(recipe) do
             - if recipe.image.url != "/images/original/missing.png"
               = image_tag recipe.image.url(:thumb)
             .categoryArticleTitle = recipe.title
