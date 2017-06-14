@@ -1,0 +1,5 @@
+fieldset
+  = f.text_field :item
+  br
+  = f.hidden_field :_destroy, class: 'remove_fields'
+  = link_to 'Remove ingredient', '#', class: 'remove_fields', remote: true

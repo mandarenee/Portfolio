@@ -8,7 +8,7 @@ section#home
             .articleDate = article.created_at.strftime("%b %d, %Y")
             - if article.image.url != "/images/original/missing.png"
               .articleImage
-                = image_tag article.image.url(:large)
+                = image_tag article.image.url(:large), alt: article.title
             .articleBody = article.body.html_safe
           
 

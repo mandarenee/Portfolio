@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607234326) do
+ActiveRecord::Schema.define(version: 20170610012519) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170607234326) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "description"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug"
@@ -76,6 +77,13 @@ ActiveRecord::Schema.define(version: 20170607234326) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "ingredients", force: :cascade do |t|
+    t.text     "item"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "technologies_used", limit: 255
@@ -109,6 +117,9 @@ ActiveRecord::Schema.define(version: 20170607234326) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "description"
+    t.integer  "recipeYield"
+    t.text     "instructions"
   end
 
   add_index "recipes", ["slug"], name: "index_recipes_on_slug"

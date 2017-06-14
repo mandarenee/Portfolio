@@ -16,12 +16,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.ingredients.new
     @categories = Category.all
     @recipe_tags = RecipeTag.all
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    # recipe_params['ingredients_attributes'].each do |ingredient|
+    #   @recipe.ingredients.new(item: ingredient[1]['item'])
+    # end
     authorize @recipe
 
     if @recipe.save
@@ -33,6 +37,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.friendly.find(params[:id])
     authorize @recipe
     @categories = Category.all
     @recipe_tags = RecipeTag.all
@@ -66,6 +71,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :image, (:published if current_user.role == "editor"), :category_ids => [], :recipe_tag_ids => [])
+    params.require(:recipe).permit(:title, :body, :image, :instructions, :description, (:published if current_user.role == "editor"), :category_ids => [], :recipe_tag_ids => [], :ingredients_attributes => [:id, :item, :_destroy])
   end
 end

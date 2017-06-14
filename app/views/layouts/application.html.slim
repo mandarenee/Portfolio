@@ -3,12 +3,21 @@ html
   head
     title Manda Kom
     = favicon_link_tag 'Favicon.png'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     = render 'layouts/google_analytics'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     meta name="p:domain_verify" content="2c364c689d144c9e9c4b5724fb6d4069"
+    meta name='description' content="#{yield_meta_tag(:description, 'Blog sharing projects, challenges, and lessons learned.')}"
+    meta name='keywords' content="#{yield_meta_tag(:keywords, 'life hacking, lifestyle, goals, software engineer, Seattle, Ruby on Rails')}"
+    meta property='og:type' content="#{yield_meta_property_tag(:type)}"
+    meta property='og:title' content="#{yield_meta_property_tag(:title)}"
+    meta property='og:description' content="#{yield_meta_property_tag(:description)}"
+    meta property='og:url' content="mandakom.com#{yield_meta_property_tag(:url)}"
+    meta property='og:site_name' content="mandakom.com"
+    meta property='article:published_time' content="#{yield_meta_property_tag(:published_at)}"
+    meta property='article:author' content="Manda Kom"
 
   = render 'shared/top_banner'
   #container

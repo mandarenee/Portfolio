@@ -4,6 +4,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :recipe_tags
+  has_many :ingredients, dependent: :destroy
+  accepts_nested_attributes_for :ingredients, allow_destroy: true
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
