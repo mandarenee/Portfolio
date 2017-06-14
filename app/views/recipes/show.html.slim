@@ -1,20 +1,30 @@
-.row
-  
-  h2.pageTitle = @recipe.title
-  .articleDate = @recipe.created_at.strftime("%b %d, %Y")
-  - if @recipe.image.url != "/images/original/missing.png"
-    .articleImage
-      = image_tag @recipe.image.url(:large)
+div(
+  itemscope
+  itemtype="http://schema.org/Recipe"
+)
+  .row  
+    h2.pageTitle(itemprop="name")
+      = @recipe.title
+    - meta_property_tag :url, "/recipes/#{@recipe.slug}"
+    .articleDate = @recipe.created_at.strftime("%b %d, %Y")
+    - if @recipe.image.url != "/images/original/missing.png"
+      .articleImage
+        = image_tag @recipe.image.url(:large), alt: @recipe.title
 
-  .articleBody  = @recipe.body.html_safe
+    .articleBody = @recipe.body.html_safe
+    h3 Ingredients
+    - @recipe.ingredients.each do |ingredient|
+      .articleBody(itemprop="ingredients") = ingredient.item
+    h3 Instructions
+    .articleBody = @recipe.instructions.html_safe if @recipe.instructions
 
-  - if RecipePolicy.new(current_user, @recipe).update?
-    - if @recipe.published?
-      p Status: Published
-    - else
-      p Status: Unpublished
+    - if RecipePolicy.new(current_user, @recipe).update?
+      - if @recipe.published?
+        p Status: Published
+      - else
+        p Status: Unpublished
 
-  - if RecipePolicy.new(current_user, @recipe).update?
-    = link_to 'Edit Recipe', edit_recipe_path(@recipe)
-    br
-    = link_to 'Delete Recipe', @recipe, method: :delete, data: {confirm: 'Are you sure?' } 
+    - if RecipePolicy.new(current_user, @recipe).update?
+      = link_to 'Edit Recipe', edit_recipe_path(@recipe)
+      br
+      = link_to 'Delete Recipe', @recipe, method: :delete, data: {confirm: 'Are you sure?' } 

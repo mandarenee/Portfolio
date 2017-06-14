@@ -1,5 +1,5 @@
 - if RecipePolicy.new(current_user, @recipe).create? || RecipePolicy.new(current_user, @recipe).update?
-  = form_for(@recipe) do |f|
+  #recipeForm = form_for(@recipe) do |f|
     - if @recipe.errors.any?
       #error_explanation
         h2 #{pluralize(@recipe.errors.count, "error")} prohibited this recipe from being saved:
@@ -22,6 +22,20 @@
       br
       = f.text_area :body, class: 'tinymce', rows: 40, cols: 120
       = tinymce
+
+    #js-Ingredients
+      | Ingredients
+      br
+      = f.fields_for :ingredients do |builder|
+        = render 'ingredient_fields', f: builder
+      br
+      = link_to_add_fields 'Add Ingredient', f, :ingredients
+    .field
+      = f.label :instructions
+      br
+      = f.text_area :instructions, class: 'tinymce', rows: 40, cols: 120
+      = tinymce
+    
     - if current_user.editor?
       .field
        = f.label :published

@@ -1,5 +1,10 @@
-.row
-  
+- meta_tag :description, @article.description
+- meta_property_tag :type, "blog"
+- meta_property_tag :title, @article.title
+- meta_property_tag :url, "/blog/#{@article.slug}"
+- meta_property_tag :updated_at, @article.created_at
+
+.row  
   h2.pageTitle = @article.title
   .articleDate = @article.created_at.strftime("%b %d, %Y")
   - if @article.image.url != "/images/original/missing.png"
