@@ -20,11 +20,11 @@
                           url: "mandakom.com/blog/#{@article.slug}",
                           image: @article.image.url,
                           'data-title': @article.title,
-                          'data-url': "mandakom.com/recipes/#{@article.slug}",
+                          'data-url': "mandakom.com/blog/#{@article.slug}",
                           'data-caption': @article.title,
                           'data-source': @article.image.url,
                           'data-quote': @article.title,
-                          'data-twitter-title': "#{@article.title} mandakom.com/recipes/#{@article.slug}")
+                          'data-twitter-title': "#{@article.title} mandakom.com/blog/#{@article.slug}")
 
   - if ArticlePolicy.new(current_user, @article).update?
     - if @article.published?
