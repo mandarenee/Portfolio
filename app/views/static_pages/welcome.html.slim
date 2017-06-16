@@ -10,5 +10,17 @@ section#home
               .articleImage
                 = image_tag article.image.url(:large), alt: article.title
             .articleBody = article.body.html_safe
+            br
+            = social_share_button_tag(article.title, 
+                                    url: "mandakom.com/blog/#{article.slug}",
+                                    image: article.image.url,
+                                    'data-title': article.title,
+                                    'data-url': "mandakom.com/#{article.slug}",
+                                    'data-caption': article.title,
+                                    'data-source': article.image.url,
+                                    'data-quote': article.title,
+                                    'data-twitter-title': "#{article.title} mandakom.com/#{article.slug}")
+
+            hr
           
 
