@@ -13,6 +13,19 @@
 
   .articleBody  = @article.body.html_safe
 
+  hr
+  h4 Did you like this post? Share it with your friends!
+  br
+  = social_share_button_tag(@article.title, 
+                          url: "mandakom.com/blog/#{@article.slug}",
+                          image: @article.image.url,
+                          'data-title': @article.title,
+                          'data-url': "mandakom.com/recipes/#{@article.slug}",
+                          'data-caption': @article.title,
+                          'data-source': @article.image.url,
+                          'data-quote': @article.title,
+                          'data-twitter-title': "#{@article.title} mandakom.com/recipes/#{@article.slug}")
+
   - if ArticlePolicy.new(current_user, @article).update?
     - if @article.published?
       p Status: Published

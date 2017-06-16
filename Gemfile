@@ -28,6 +28,7 @@ gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'social-share-button'
 
 group :development do
   gem 'spring'
